@@ -1,0 +1,94 @@
+.admin {
+    min-height: 90vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f2f2f2;
+}
+
+.login {
+    width: 50vw;
+    height: 70vh;
+    box-shadow: 5px 5px 10px -2px grey;
+    background: #fff;
+    border-radius: .4em;    
+}
+
+.login_top img {
+    width: 60px;
+}
+
+.login_top {
+	position: relative;
+	background: #d8d8d8;
+    border-top-left-radius: .4em;
+    border-top-right-radius: .4em;    
+    margin-bottom: 40px;
+    padding: 2%;
+}
+
+.login_top:after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	width: 0;
+	height: 0;
+	border: 10px solid transparent;
+	border-top-color: #d8d8d8;
+	border-bottom: 0;
+	margin-left: -10px;
+	margin-bottom: -10px;
+}
+
+.login_btm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login_btm input {
+    height: 30px;
+    width: 200px;
+    background: #fff !important;
+    margin-left: 2%;
+}
+
+.login_btm img {
+    height: 30px;
+    width: 30px;
+    background: #f2f2f2;
+    
+}
+
+.login_btm > div {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1%;
+    padding-bottom: 1%;
+    border-bottom: 1px solid grey;
+
+}
+
+.admin button {
+    background: #56a082;
+    width: 230px;
+    height: 30px;
+    color: #fff;
+    font-size: 1em;
+    border-radius: 5px;
+    margin-top: 5vh;
+    cursor: pointer;
+}
+
+.admin button:active {
+    transform: scale(.98)
+}
+
+.admin p {
+    color: #f00;
+    margin-top: 5%;
+}

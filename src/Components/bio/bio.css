@@ -1,0 +1,38 @@
+.bio {
+    display: flex;
+}
+
+.image_cont {
+    width: 30vw;
+}
+
+.bio img {
+    height: 90vh;
+    margin-left: 5vw;
+}
+
+.bio h1 {
+    text-align: center;
+}
+
+.bio_right {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 70vw;
+}
+
+.bio_text {
+    position: absolute;
+    box-shadow: 1px 1px 5px grey;
+    padding: 2%;
+    margin: 2%;
+    font-size: .9em;
+    left: -5vw;
+    top: 25vh;
+    background: #fff;
+}
+
+.bio_text p {
+    margin-bottom: 4%;
+}

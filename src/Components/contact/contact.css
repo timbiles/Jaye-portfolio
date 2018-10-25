@@ -1,0 +1,114 @@
+.contact {
+    display: flex;
+    min-height: 85vh;
+    font-family: 'Raleway', sans-serif;
+    margin-top: 5vh;    
+}
+
+.contact h1,
+.bio h1 {
+    width: 40vw;
+    font-size: 5em;
+    font-weight: 300;
+    margin-top: 5vh;
+}
+
+.contact_main {
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact_sub {
+    display: flex;
+    flex-direction: column;
+    margin: 2% 0;
+    padding: 5% 8%;
+}
+
+.contact_main input,
+textarea {
+    border-radius: 2px;
+}
+
+.contact_main input {
+    height: 25px;
+    width: 300px;    
+    border-radius: 0;
+    margin: 1%;
+    font-size: .9em;
+    /* background: #fcfcfc; */
+    border-bottom: 1px solid rgb(165, 165, 165);
+    /* box-shadow: 1px 1px 1px .5px #747474; */
+}
+
+textarea {
+    border: 1px solid #747474;    
+    /* box-shadow: 1px 1px 3px .5px #747474; */
+    background: #fcfcfc;    
+    width: 445px;
+    max-width: 445px;
+    height: 100px;
+    max-height: 150px;   
+}
+
+.input_map {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.input_map p {
+    width: 150px;
+}
+
+.input_map input::placeholder,
+.contact textarea::placeholder {
+    opacity: .4;
+    padding-left: 1%;  
+}
+
+.input_map input::placeholder {
+ 
+    font-size: .9em;
+}
+
+.contact textarea::placeholder {
+    font-size: 1.4em;    
+}
+
+input:focus,
+textarea:focus,
+.contact button:focus,
+.admin button:focus {
+    outline: none;
+}
+
+.contact button:active {
+    transform: scale(.98)
+}
+
+
+.contact_sub p {
+    color: #595959;
+    font-weight: 100;
+    letter-spacing: 1px;
+    text-align: start;
+    font-size: .8em;
+    margin: 1% 0;
+}
+
+.contact_sub button {
+    color: #fff;
+    width: 448px;
+    height: 30px;
+    border-radius: 2px;
+    background: #56a082;
+    margin-top: 4%;
+    cursor: pointer;
+}
+
+.focus_p {
+    color: #56a082 !important;
+}
