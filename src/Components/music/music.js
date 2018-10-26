@@ -5,7 +5,7 @@ import './music.css';
 class music extends Component {
     render() {
         return (
-            <div className='music'>
+            <div className='music'  >
                 
             </div>
         );

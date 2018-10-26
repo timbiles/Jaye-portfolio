@@ -33,6 +33,7 @@ class input extends Component {
         {e.text === 'Contact Phone' ? (
           <input
             name={e.name}
+            autoComplete='off'
             value={phoneNum !== 0 ? phoneNum : ''}
             type="text"
             onChange={e => {
@@ -45,6 +46,7 @@ class input extends Component {
           <input
             name={e.name}
             type="text"
+            autoComplete='off'            
             onChange={e => handleChange(e)}
             onFocus={() => this.setState({ click: true })}
             onBlur={() => this.setState({ click: false })}

@@ -23,7 +23,6 @@ class admin extends Component {
     axios
       .put('/api/admin', { user, pass })
       .then(res => {
-        console.log(res.data);
         this.setState({ login: true });
       })
       .catch(err => {

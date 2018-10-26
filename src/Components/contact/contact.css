@@ -53,6 +53,7 @@ textarea {
     max-width: 445px;
     height: 100px;
     max-height: 150px;   
+    font-size: .9em;
 }
 
 .input_map {
@@ -74,10 +75,6 @@ textarea {
 .input_map input::placeholder {
  
     font-size: .9em;
-}
-
-.contact textarea::placeholder {
-    font-size: 1.4em;    
 }
 
 input:focus,
