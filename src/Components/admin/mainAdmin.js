@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import './mainAdmin.css';
 
 class mainAdmin extends Component {
+    state = {
+        events: []
+    }
+
+    componentDidMount(){
+        this.getEvents()
+    }
+
+    getEvents = () => {
+        axios.get('/api/events').then(res=> {
+            this.setState({events: res.data})
+        })
+    }
+
   render() {
     return (
       <div className="main_admin">
@@ -13,8 +28,9 @@ class mainAdmin extends Component {
           <p>Bio</p>
         </div>
         <div className="ma_events">
-          <div>
+          <div className='ma_events_left'>
             <h2>Events</h2>
+            {/* <p>Add an event</p>
             <div>
               <p>Date</p>
               <input type="text" />
@@ -26,9 +42,9 @@ class mainAdmin extends Component {
             <div>
               <p>Location</p>
               <input type="text" />
-            </div>
+            </div> */}
           </div>
-          <div className="ma_bio">
+          <div className="ma_events_right">
             <div>Music</div>
             <div>Bio</div>
           </div>

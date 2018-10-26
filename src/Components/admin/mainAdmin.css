@@ -11,20 +11,32 @@
 .ma_events {
     width: 85vw;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: center;
 }
 
-.ma_events > div:nth-of-type(1),
-.ma_bio > div {
+.ma_events_left,
+.ma_events_right > div {
     box-shadow: 1px 1px 10px -2px grey;
-    width: 60vw; 
 }
 
-.ma_bio {
+.ma_events_right,
+.ma_events_left {
     display: flex;
+    flex-direction: column;
+    align-items: center;    
+    width: 45%;
 }
 
-.ma_bio > div {
+.ma_events_right > div {
     width: 30vw;
+}
+
+.ma_events_left > div {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+}
+
+.ma_events_left input {
+    border: 1px solid #000;
 }

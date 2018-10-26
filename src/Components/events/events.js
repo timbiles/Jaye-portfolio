@@ -1,35 +1,37 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import moment from 'moment';
 
 import './events.css';
 
 class events extends Component {
   state = {
-    events: [
-      {
-        name: 'Church gig',
-        date: '16 Nov',
-        location: 'Fort Worth, TX'
-      },
-      {
-        name: 'Singing',
-        date: '10 Dec',
-        location: 'Dallas, TX'
-      }
-    ]
+    events: []
   };
+
+  componentDidMount() {
+    this.getEvents();
+  }
+
+  getEvents = () => {
+    axios.get('/api/events').then(res => {
+      this.setState({ events: res.data });
+    });
+  };
+
   render() {
     const eventsMap = this.state.events.map((e, i) => {
       return (
         <div className="events_map" key={i}>
-          <p>{e.date}</p>
-          <p>{e.name}</p>
+          <p>{moment.utc(e.date).format('D MMM')}</p>
+          <p>{e.event}</p>
           <p>{e.location}</p>
         </div>
       );
     });
     return (
       <div className="events">
-        <div className='events_top'>
+        <div className="events_top">
           <h1>Jaye Biles</h1>
           <h1>Upcoming Events</h1>
         </div>
