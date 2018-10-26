@@ -1,0 +1,17 @@
+[
+    {
+        "name": "name", "text": "Contact Name"
+    },
+    {
+        "name": "email", "text": "Contact Email"
+    },
+    {
+        "name": "phone", "text": "Contact Phone"
+    },
+    {
+        "name": "date", "text": "Date of Event"
+    },
+    {
+        "name": "location", "text": "Location / Time"
+    }
+]

@@ -1,39 +1,34 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import Input from './input';
+import data from './info.json';
 import './contact.css';
 
 class form extends Component {
   state = {
     click: false,
-    inputs: [
-      {
-        name: 'Contact Name',
-        placeholder: 'Olive Leanne'
-      },
-      {
-        name: 'Contact Email',
-        placeholder: 'Olive@olivebranchdesigns.com'
-      },
-      {
-        name: 'Contact Phone',
-        placeholder: '505-148-3369'
-      },
-      {
-        name: 'Date of Event',
-        placeholder: '07/29/2017'
-      },
-      {
-        name: 'Location / Time',
-        placeholder: 'Dallas, 4:00'
-      }
-    ]
+    name: '',
+    email: '',
+    phone: '',
+    date: '',
+    location: '',
+    desc: ''
   };
 
+  handleChange = e => {
+      this.setState({[e.target.name]: e.target.value})
+  }
+
+  submit = () => {
+      const {name, email, phone, date, location, desc} = this.state
+    axios.put('/api/contacts', {name, email, phone, date, location, desc})
+  }
+
   render() {
-    const { inputs, click } = this.state;
-    const inputMap = inputs.map((e, i) => {
-      return <Input key={i} e={e} />;
+    const { click } = this.state;
+    const inputMap = data.map((e, i) => {
+      return <Input key={i} e={e} handleChange={this.handleChange}/>;
     });
 
     return (
@@ -50,11 +45,12 @@ class form extends Component {
               id=""
               cols="30"
               rows="10"
-              placeholder='Brief description..'
+              placeholder="Brief description.."
               onFocus={() => this.setState({ click: true })}
               onBlur={() => this.setState({ click: false })}
+              onChange={e=> this.setState({desc: e.target.value})}
             />
-            <button>Contact Now</button>
+            <button onClick={()=> this.submit()}>Contact Now</button>
           </div>
         </div>
       </div>

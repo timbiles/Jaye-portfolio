@@ -6,6 +6,7 @@ const session = require('express-session');
 const path = require('path');
 
 const port = process.env.SERVER_PORT || 3004;
+const {submitContacts} = require('./ctrl/ctrl');
 
 const app = express();
 app.use(bodyParser.json());
@@ -54,7 +55,7 @@ app.get('/api/logged-in', (req, res) => {
 });
 
 //endpoints
-
+app.put('/api/contacts', submitContacts)
 
 //run build
 // app.get('*', (req, res) => {

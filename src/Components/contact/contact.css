@@ -23,8 +23,10 @@
 .contact_sub {
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
     margin: 2% 0;
     padding: 5% 8%;
+    height: 60vh;
 }
 
 .contact_main input,

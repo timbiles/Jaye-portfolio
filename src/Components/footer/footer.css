@@ -1,0 +1,22 @@
+.footer {
+    display: flex;
+    align-items: center;
+    height: 5vh;
+    margin: 1% 2%;
+}
+
+.footer p {
+    font-size: .8em;
+}
+
+.footer img {
+    height: 20px;
+}
+
+.footer p:nth-of-type(2) {
+    margin: 0 15px;
+}
+
+.footer p:nth-of-type(3) {
+    border-bottom: 1px solid grey;
+}
