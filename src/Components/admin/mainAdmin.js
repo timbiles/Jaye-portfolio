@@ -2,8 +2,18 @@ import React, { Component } from 'react';
 
 import './mainAdmin.css';
 import EventMap from '../tools/eventMap/eventMap';
+import Modal from '../tools/modal/modal';
 
-class mainAdmin extends Component {
+class MainAdmin extends Component {
+  state = { show: false };
+
+  showModal = () => {
+    this.setState({ show: true });
+  };
+
+  hideModal = () => {
+    this.setState({ show: false });
+  };
 
   render() {
     return (
@@ -14,9 +24,17 @@ class mainAdmin extends Component {
           <p>Bio</p>
         </div>
         <div className="ma_events">
-          <div className='ma_events_top'>
+          <div className="ma_events_top">
             <h2>Events</h2>
-            <EventMap styling='admin_events_map'/>
+            <EventMap styling="admin_events_map" />
+            <p>Modal</p>
+              <Modal show={this.state.show} handleClose={this.hideModal}>
+                <p>Modal</p>
+                <p>Data</p>
+              </Modal>
+            <button type="button" onClick={this.showModal}>
+              open
+            </button>
           </div>
           <div className="ma_events_right">
             <div>Music</div>
@@ -28,4 +46,4 @@ class mainAdmin extends Component {
   }
 }
 
-export default mainAdmin;
+export default MainAdmin;
