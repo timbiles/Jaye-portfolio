@@ -6,12 +6,13 @@ import EventMap from '../tools/eventMap/eventMap';
 import Modal from '../tools/modal/modal';
 
 class MainAdmin extends Component {
-  state = { 
-      show: false,
-      event: '',
-      date: '',
-      location: ''
-    };
+  state = {
+    show: false,
+    add: false,
+    event: '',
+    date: '',
+    location: ''
+  };
 
   showModal = () => {
     this.setState({ show: true });
@@ -22,16 +23,14 @@ class MainAdmin extends Component {
   };
 
   updateInput = e => {
-    this.setState({[e.target.name]: e.target.value})
-  }
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
   submitEvent = () => {
-    const {event, date, location} = this.state;
-
-    axios.post('/api/events', {event, date, location}).then(res=> {
-        console.log(res.data)
-    })
-  }
+    const { event, date, location } = this.state;
+    this.setState({ obj: { event, date, location }, add: true });
+    this.hideModal()
+  };
 
   render() {
     return (
@@ -44,7 +43,11 @@ class MainAdmin extends Component {
         <div className="ma_events">
           <div className="ma_events_top">
             <h2>Events</h2>
-            <EventMap styling="admin_events_map"/>
+            <EventMap
+              styling="admin_events_map"
+              obj={this.state.obj}
+              add={this.state.add}
+            />
             <p>Modal</p>
             <Modal show={this.state.show} handleClose={this.hideModal}>
               <div>
