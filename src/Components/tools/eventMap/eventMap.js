@@ -7,20 +7,12 @@ class eventMap extends Component {
     events: []
   };
 
-  componentWillReceiveProps(nextprops) {
-    // console.log(nextprops)
-    if (this.props.add) {
-      const { event, date, location } = this.props.obj;
-      axios.post('/api/events', { event, date, location }).then(res => {
-        console.log('hit', res.data);
-        this.getEvents();
-      });
-    }
+  componentDidMount() {
+    this.getEvents();
   }
 
-  componentDidMount() {
-    console.log('hit')
-    this.getEvents();
+  componentWillReceiveProps(nextProps) {
+    nextProps.add && this.getEvents();
   }
 
   getEvents = () => {
@@ -29,6 +21,10 @@ class eventMap extends Component {
     });
   };
 
+  removeEvent = async e => {
+    await axios.delete(`/api/events/${e.id}`);
+    await this.getEvents();
+  };
 
   render() {
     const eventsMap = this.state.events.map((e, i) => {
@@ -37,6 +33,9 @@ class eventMap extends Component {
           <p>{moment.utc(e.date).format('D MMM')}</p>
           <p>{e.event}</p>
           <p>{e.location}</p>
+          {this.props.edit && (
+            <button onClick={() => this.removeEvent(e)}>X</button>
+          )}
         </div>
       );
     });

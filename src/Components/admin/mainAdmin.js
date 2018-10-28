@@ -9,6 +9,7 @@ class MainAdmin extends Component {
   state = {
     show: false,
     add: false,
+    edit: true,
     event: '',
     date: '',
     location: ''
@@ -26,13 +27,16 @@ class MainAdmin extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  submitEvent = () => {
+  submitEvent = async () => {
     const { event, date, location } = this.state;
-    this.setState({ obj: { event, date, location }, add: true });
-    this.hideModal()
+    await axios.post('/api/events', { event, date, location }).then(res => {
+    this.setState({ add: true });        
+      })
+    await this.hideModal()      
   };
 
   render() {
+      const {add, edit} = this.state;
     return (
       <div className="main_admin">
         <div className="ma_nav">
@@ -45,8 +49,8 @@ class MainAdmin extends Component {
             <h2>Events</h2>
             <EventMap
               styling="admin_events_map"
-              obj={this.state.obj}
-              add={this.state.add}
+              add={add}
+              edit={edit}
             />
             <p>Modal</p>
             <Modal show={this.state.show} handleClose={this.hideModal}>
