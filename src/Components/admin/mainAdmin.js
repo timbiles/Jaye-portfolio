@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import './mainAdmin.css';
 import EventMap from '../tools/eventMap/eventMap';
 import Modal from '../tools/modal/modal';
 
 class MainAdmin extends Component {
-  state = { show: false };
+  state = { 
+      show: false,
+      event: '',
+      date: '',
+      location: ''
+    };
 
   showModal = () => {
     this.setState({ show: true });
@@ -14,6 +20,18 @@ class MainAdmin extends Component {
   hideModal = () => {
     this.setState({ show: false });
   };
+
+  updateInput = e => {
+    this.setState({[e.target.name]: e.target.value})
+  }
+
+  submitEvent = () => {
+    const {event, date, location} = this.state;
+
+    axios.post('/api/events', {event, date, location}).then(res=> {
+        console.log(res.data)
+    })
+  }
 
   render() {
     return (
@@ -26,12 +44,31 @@ class MainAdmin extends Component {
         <div className="ma_events">
           <div className="ma_events_top">
             <h2>Events</h2>
-            <EventMap styling="admin_events_map" />
+            <EventMap styling="admin_events_map"/>
             <p>Modal</p>
-              <Modal show={this.state.show} handleClose={this.hideModal}>
-                <p>Modal</p>
-                <p>Data</p>
-              </Modal>
+            <Modal show={this.state.show} handleClose={this.hideModal}>
+              <div>
+                <p>Event</p>
+                <input
+                  type="text"
+                  name="event"
+                  onChange={e => this.updateInput(e)}
+                />
+                <p>Date</p>
+                <input
+                  type="text"
+                  name="date"
+                  onChange={e => this.updateInput(e)}
+                />
+                <p>Location</p>
+                <input
+                  type="text"
+                  name="location"
+                  onChange={e => this.updateInput(e)}
+                />
+                <button onClick={this.submitEvent}>Add Event</button>
+              </div>
+            </Modal>
             <button type="button" onClick={this.showModal}>
               open
             </button>

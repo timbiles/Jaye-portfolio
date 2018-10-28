@@ -23,7 +23,7 @@ const modal = ({ handleClose, show, children }) => {
   return (
     show && (
       <Container>
-        <Section onBlur={() => handleClose}>
+        <Section>
           {children}
           <button onClick={handleClose}>close</button>
         </Section>

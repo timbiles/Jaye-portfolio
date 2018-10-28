@@ -6,7 +6,7 @@ const session = require('express-session');
 const path = require('path');
 
 const port = process.env.SERVER_PORT || 3004;
-const {submitContacts, getEvents} = require('./ctrl/ctrl');
+const {submitContacts, getEvents, addEvent} = require('./ctrl/ctrl');
 
 const app = express();
 app.use(bodyParser.json());
@@ -58,6 +58,7 @@ app.get('/api/logged-in', (req, res) => {
 app.put('/api/contacts', submitContacts)
 
 app.get('/api/events', getEvents)
+app.post('/api/events', addEvent)
 
 //run build
 // app.get('*', (req, res) => {

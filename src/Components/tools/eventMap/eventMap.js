@@ -10,12 +10,14 @@ class eventMap extends Component {
       componentDidMount() {
         this.getEvents();
       }
+
     
       getEvents = () => {
         axios.get('/api/events').then(res => {
           this.setState({ events: res.data });
         });
       };
+      
     render() {
         const eventsMap = this.state.events.map((e, i) => {
             return (

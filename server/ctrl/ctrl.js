@@ -15,7 +15,22 @@ const getEvents = (req, res) => {
     });
 };
 
+const addEvent = (req, res) => {
+  const db = req.app.get('db');
+  const { event, date, location } = req.body;
+  console.log(req.body)
+
+  db.events.add_event([event, date, location])
+    .then(resp => {
+      res.status(200).send(resp);
+    })
+    .catch(err => {
+      res.status(500).send(err);
+    });
+};
+
 module.exports = {
   submitContacts,
-  getEvents
+  getEvents,
+  addEvent
 };
