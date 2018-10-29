@@ -28,9 +28,13 @@
   padding: 2%;
   margin: 2%;
   font-size: 0.9em;
-  left: -5vw;
+  /* left: -5vw; */
   top: 25vh;
+  width: 60vw;
   background: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* .bio_text p {
@@ -43,4 +47,9 @@
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   font-size: 0.8em;
+  white-space: pre-wrap;
+}
+
+.bio a {
+  color: #5050c7;
 }

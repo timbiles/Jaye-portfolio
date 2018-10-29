@@ -84,6 +84,10 @@ textarea:focus,
     outline: none;
 }
 
+.input_map input:focus {
+    background: #fcfcfc;            
+}
+
 .contact button:active {
     transform: scale(.98)
 }

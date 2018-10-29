@@ -11,6 +11,8 @@ class MainAdmin extends Component {
     show: false,
     add: false,
     edit: true,
+    editBio: false,
+    toggleEdit: false,
     event: '',
     date: '',
     location: '',
@@ -54,7 +56,7 @@ class MainAdmin extends Component {
   };
 
   render() {
-    const { add, edit, bio, input } = this.state;
+    const { add, edit, bio, input, editBio, toggleEdit } = this.state;
 
     const eventInputs = input.map((el, i) => {
       return (
@@ -74,7 +76,7 @@ class MainAdmin extends Component {
         <div className="ma_nav">
           <p onClick={this.showModal}>Add Event</p>
           <p>Music</p>
-          <p>Bio</p>
+          <p onClick={() => this.setState({editBio: true, toggleEdit: !toggleEdit})}>Edit Bio</p>
         </div>
         <div className="ma_events">
           <div className="ma_events_top">
@@ -82,8 +84,10 @@ class MainAdmin extends Component {
             <EventMap styling="admin_events_map" add={add} edit={edit} />
           </div>
           <div className="ma_events_btm">
-            <div>Music</div>
-            <div>
+            {
+              editBio && 
+
+            <div className={toggleEdit ? 'biography_info' : 'biography_info_exit'}>
               <h4>Biography</h4>
               <ContentEditable
                   html={bio && bio[0].biography}
@@ -91,6 +95,7 @@ class MainAdmin extends Component {
                   className='admin_bio'
                 />
             </div>
+            }
           </div>
         </div>
         <Modal handleClose={this.hideModal} show={this.state.show}>
