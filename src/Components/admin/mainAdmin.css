@@ -8,6 +8,10 @@
   border-right: 1px solid grey;
 }
 
+.ma_nav p {
+    cursor: pointer;
+}
+
 .ma_events {
   width: 85vw;
   display: flex;
@@ -44,7 +48,7 @@
   width: 100%;
 }
 
-.ma_events_top input {
+.main_admin input {
   border: 1px solid #000;
 }
 
@@ -63,4 +67,10 @@
 
 .admin_events_map p:nth-of-type(2) {
   width: 50%;
+}
+
+.modal_admin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
