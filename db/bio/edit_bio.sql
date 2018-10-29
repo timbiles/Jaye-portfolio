@@ -1,0 +1,1 @@
+UPDATE bios SET biography = $1;

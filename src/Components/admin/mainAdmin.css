@@ -20,11 +20,11 @@
 }
 
 .ma_events_top,
-.ma_events_right > div {
+.ma_events_btm > div {
   box-shadow: 1px 1px 10px -2px grey;
 }
 
-.ma_events_right,
+.ma_events_btm,
 .ma_events_top {
   display: flex;
   flex-direction: column;
@@ -38,8 +38,8 @@
     margin: 2% 0;
 }
 
-.ma_events_right > div {
-  width: 30vw;
+.ma_events_btm > div {
+  width: 100%;
 }
 
 .ma_events_top > div {
@@ -73,4 +73,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.admin_bio {
+    /* width: 80%; */
 }

@@ -1,10 +1,31 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 import sing from '../files/sing.png';
 import './bio.css';
 
 class bio extends Component {
+
+  state = {
+    bio: ''
+}
+
+componentDidMount() {
+    this.getBio()
+}
+
+getBio() {            
+    axios.get('/api/biography').then(res => {
+        const {biography} = res.data[0]
+        console.log(biography)
+        const bio = biography.replace(/<br>/gi, "\n").replace(/<div>/gi, "\n").replace(/<\/div>/gi, '')
+      this.setState({ bio: bio });
+    })
+  }
+
   render() {
+    const {bio} = this.state
+    
     return (
       <div className="bio">
       <div className='image_cont'>
@@ -14,16 +35,10 @@ class bio extends Component {
         <div className='bio_right'>
           <h1>About</h1>
           <div className="bio_text">
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni
-              atque, repellat numquam alias dolorum adipisci vel delectus est
-              accusamus hic obcaecati ut labore, repudiandae deserunt aperiam et
-              nobis at. Autem! Magni
-              atque, repellat numquam alias dolorum adipisci vel delectus est
-              accusamus hic obcaecati ut labore, repudiandae deserunt aperiam et
-              nobis at. Autem!
-            </p>
-            <p>This is another paragraph. Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae magnam maiores iste aperiam, accusantium sit qui aut officiis suscipit culpa quam sequi blanditiis ipsa placeat rem amet hic eligendi nisi!</p>
+          <pre>
+                {bio && bio}
+          </pre>
+
           </div>
         </div>
       </div>

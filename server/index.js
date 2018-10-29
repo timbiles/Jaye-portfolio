@@ -7,7 +7,7 @@ const path = require('path');
 
 const port = process.env.SERVER_PORT || 3004;
 const {submitContacts, getEvents, addEvent, removeEvent} = require('./ctrl/ctrl');
-const { getBio } = require('./ctrl/bioCtrl');
+const { getBio, editBio } = require('./ctrl/bioCtrl');
 
 const app = express();
 app.use(bodyParser.json());
@@ -63,6 +63,7 @@ app.post('/api/events', addEvent)
 app.delete('/api/events/:id', removeEvent)
 
 app.get('/api/biography', getBio)
+app.put('/api/biography', editBio)
 
 //run build
 // app.get('*', (req, res) => {

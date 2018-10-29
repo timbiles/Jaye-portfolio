@@ -1,38 +1,46 @@
 .bio {
-    display: flex;
+  display: flex;
 }
 
 .image_cont {
-    width: 30vw;
+  width: 30vw;
 }
 
 .bio img {
-    height: 90vh;
-    margin-left: 5vw;
+  height: 90vh;
+  margin-left: 5vw;
 }
 
 .bio h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .bio_right {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    width: 70vw;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 70vw;
 }
 
 .bio_text {
-    position: absolute;
-    box-shadow: 1px 1px 5px grey;
-    padding: 2%;
-    margin: 2%;
-    font-size: .9em;
-    left: -5vw;
-    top: 25vh;
-    background: #fff;
+  position: absolute;
+  box-shadow: 1px 1px 5px grey;
+  padding: 2%;
+  margin: 2%;
+  font-size: 0.9em;
+  left: -5vw;
+  top: 25vh;
+  background: #fff;
 }
 
-.bio_text p {
-    margin-bottom: 4%;
+/* .bio_text p {
+  margin-bottom: 4%;
+} */
+
+.bio pre {
+  /* font-family: 'Raleway', sans-serif; */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  font-size: 0.8em;
 }

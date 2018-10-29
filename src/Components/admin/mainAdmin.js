@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import ContentEditable from 'react-contenteditable';
 
 import './mainAdmin.css';
 import EventMap from '../tools/eventMap/eventMap';
@@ -13,7 +14,8 @@ class MainAdmin extends Component {
     event: '',
     date: '',
     location: '',
-    bio: ''
+    bio: '',
+    input: ['Event', 'Date', 'Location']
   };
 
   componentDidMount() {
@@ -39,6 +41,10 @@ class MainAdmin extends Component {
     });
   }
 
+  updateBio = val => {
+    axios.put('/api/biography', {bio: val})
+  }
+
   submitEvent = async () => {
     const { event, date, location } = this.state;
     await axios.post('/api/events', { event, date, location }).then(res => {
@@ -48,7 +54,21 @@ class MainAdmin extends Component {
   };
 
   render() {
-    const { add, edit, bio } = this.state;
+    const { add, edit, bio, input } = this.state;
+
+    const eventInputs = input.map((el, i) => {
+      return (
+        <div key={i}>
+          <p>{el}</p>
+          <input
+            type="text"
+            name={el.toLowerCase()}
+            onChange={e => this.updateInput(e)}
+          />
+        </div>
+      );
+    });
+
     return (
       <div className="main_admin">
         <div className="ma_nav">
@@ -61,34 +81,21 @@ class MainAdmin extends Component {
             <h2>Events</h2>
             <EventMap styling="admin_events_map" add={add} edit={edit} />
           </div>
-          <div className="ma_events_right">
+          <div className="ma_events_btm">
             <div>Music</div>
             <div>
               <h4>Biography</h4>
-              <p>{bio && bio[0].biography}</p>
+              <ContentEditable
+                  html={bio && bio[0].biography}
+                  onChange={e => this.updateBio(e.target.value)}
+                  className='admin_bio'
+                />
             </div>
           </div>
         </div>
         <Modal handleClose={this.hideModal} show={this.state.show}>
           <div className="modal_admin">
-            <p>Event</p>
-            <input
-              type="text"
-              name="event"
-              onChange={e => this.updateInput(e)}
-            />
-            <p>Date</p>
-            <input
-              type="text"
-              name="date"
-              onChange={e => this.updateInput(e)}
-            />
-            <p>Location</p>
-            <input
-              type="text"
-              name="location"
-              onChange={e => this.updateInput(e)}
-            />
+            {eventInputs}
             <button onClick={this.submitEvent}>Add Event</button>
           </div>
         </Modal>
