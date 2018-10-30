@@ -11,9 +11,12 @@ const Container = styled.div`
 `;
 const Section = styled.div`
   position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: white;
-  width: 80%;
-  height: auto;
+  width: 40vw;
+  height: 50vh;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -22,10 +25,9 @@ const Section = styled.div`
 const modal = ({ handleClose, show, children }) => {
   return (
     show && (
-      <Container>
+      <Container id='modal' onClick={e => handleClose(e)}>
         <Section>
           {children}
-          <button onClick={handleClose}>close</button>
         </Section>
       </Container>
     )

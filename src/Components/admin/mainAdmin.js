@@ -13,6 +13,8 @@ class MainAdmin extends Component {
     edit: true,
     editBio: false,
     toggleEdit: false,
+    editMusic: false,
+    toggleMusicEdit: false,
     event: '',
     date: '',
     location: '',
@@ -24,13 +26,11 @@ class MainAdmin extends Component {
     this.getBio();
   }
 
-  showModal = () => {
-    this.setState({ show: true });
-  };
-
-  hideModal = () => {
+  handleClose = (e) => {
+    if(e.target.id === 'modal'){
     this.setState({ show: false });
-  };
+    }
+  }
 
   updateInput = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -38,7 +38,6 @@ class MainAdmin extends Component {
 
   getBio() {
     axios.get('/api/biography').then(res => {
-      console.log(res.data);
       this.setState({ bio: res.data });
     });
   }
@@ -50,17 +49,16 @@ class MainAdmin extends Component {
   submitEvent = async () => {
     const { event, date, location } = this.state;
     await axios.post('/api/events', { event, date, location }).then(res => {
-      this.setState({ add: true });
+      this.setState({ add: true, show: false });
     });
-    await this.hideModal();
   };
 
   render() {
-    const { add, edit, bio, input, editBio, toggleEdit } = this.state;
+    const { add, edit, bio, input, editBio, toggleEdit, editMusic, toggleMusicEdit } = this.state;
 
     const eventInputs = input.map((el, i) => {
       return (
-        <div key={i}>
+        <div className='events_mapper' key={i}>
           <p>{el}</p>
           <input
             type="text"
@@ -74,8 +72,8 @@ class MainAdmin extends Component {
     return (
       <div className="main_admin">
         <div className="ma_nav">
-          <p onClick={this.showModal}>Add Event</p>
-          <p>Music</p>
+          <p onClick={() => this.setState({ show: true })}>Add Event</p>
+          <p onClick={() => this.setState({editMusic: true, toggleMusicEdit: !toggleMusicEdit})}>Music</p>
           <p onClick={() => this.setState({editBio: true, toggleEdit: !toggleEdit})}>Edit Bio</p>
         </div>
         <div className="ma_events">
@@ -83,6 +81,7 @@ class MainAdmin extends Component {
             <h2>Events</h2>
             <EventMap styling="admin_events_map" add={add} edit={edit} />
           </div>
+
           <div className="ma_events_btm">
             {
               editBio && 
@@ -97,8 +96,19 @@ class MainAdmin extends Component {
             </div>
             }
           </div>
+          <div className="ma_events_btm">
+            {
+              editMusic && 
+
+            <div className={toggleMusicEdit ? 'biography_info' : 'biography_info_exit'}>
+              <h4>Music</h4>
+              <p>This is where music stuff will go...</p>
+            </div>
+            }
+          </div>
+          
         </div>
-        <Modal handleClose={this.hideModal} show={this.state.show}>
+        <Modal handleClose={this.handleClose} show={this.state.show}>
           <div className="modal_admin">
             {eventInputs}
             <button onClick={this.submitEvent}>Add Event</button>

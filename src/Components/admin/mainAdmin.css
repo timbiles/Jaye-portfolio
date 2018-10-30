@@ -4,12 +4,17 @@
 }
 
 .ma_nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 15vw;
   border-right: 1px solid grey;
 }
 
 .ma_nav p {
   cursor: pointer;
+  width: max-content;
+  margin: 1% 0;
 }
 
 .ma_events {
@@ -84,6 +89,43 @@
 .biography_info_exit {
   animation: slide-out-blurred-left 0.45s cubic-bezier(0.755, 0.050, 0.855, 0.060) both;
 }
+
+.events_mapper p {
+  font-weight: 300;
+  font-size: 1.5em;
+  margin: 2% 0;
+}
+
+.events_mapper input {
+  border: 1px solid #d8d8d8;
+  height: 20px;
+  width: 350px;
+}
+
+.events_mapper input:focus {
+  border-bottom: 1px solid #414141;
+}
+
+.modal_admin button {
+  margin: 5% 0;
+  padding: 2%;
+  border: 1px solid #d8d8d8;
+  border-radius: 5px;
+}
+
+.modal_admin button:hover {
+  background: #ebebeb;
+  cursor: pointer;
+}
+
+.modal_admin button:active {
+  transform: scale(.98);
+}
+
+.modal_admin button:focus {
+  outline: none;
+}
+
 
 @keyframes slide-in-elliptic-left-fwd {
   0% {
