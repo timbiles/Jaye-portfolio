@@ -28,7 +28,7 @@ class MainAdmin extends Component {
 
   handleClose = (e) => {
     if(e.target.id === 'modal'){
-    this.setState({ show: false });
+    this.setState({ show: false });      
     }
   }
 
