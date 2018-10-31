@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import './nav.css';
+import './nav.scss';
 
 class nav extends Component {
   state = {

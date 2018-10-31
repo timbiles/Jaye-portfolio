@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './events.css';
+import './events.scss';
 import EventMap from '../tools/eventMap/eventMap';
 
 class events extends Component {

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Input from './input';
 import data from './info.json';
-import './contact.css';
+import './contact.scss';
 
 class form extends Component {
   state = {

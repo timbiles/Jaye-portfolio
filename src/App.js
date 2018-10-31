@@ -4,7 +4,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import Nav from './Components/nav/nav';
 import Footer from './Components/footer/footer';
 import routes from './routes';
-import './App.css';
+import './App.scss';
 
 class App extends Component {
   render() {

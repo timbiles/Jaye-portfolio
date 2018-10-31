@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import sing from '../files/sing.png';
-import './bio.css';
+import './bio.scss';
 
 class bio extends Component {
   state = {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import ContentEditable from 'react-contenteditable';
 
-import './mainAdmin.css';
+import './mainAdmin.scss';
 import EventMap from '../tools/eventMap/eventMap';
 import Modal from '../tools/modal/modal';
 

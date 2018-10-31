@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './music.css';
+import './music.scss';
 
 class music extends Component {
   render() {

@@ -1,27 +1,30 @@
+@mixin flex {
+  display: flex;
+  align-items: center;
+}
+
 .main_admin {
   min-height: 90vh;
   display: flex;
 }
 
 .ma_nav {
-  display: flex;
+  @include flex;
   flex-direction: column;
-  align-items: center;
   width: 15vw;
   border-right: 1px solid grey;
+  p {
+    cursor: pointer;
+    width: max-content;
+    margin: 1% 0;
+  }
 }
 
-.ma_nav p {
-  cursor: pointer;
-  width: max-content;
-  margin: 1% 0;
-}
 
 .ma_events {
+  @include flex;
   width: 85vw;
-  display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .ma_events_top,
@@ -31,9 +34,8 @@
 
 .ma_events_btm,
 .ma_events_top {
-  display: flex;
+  @include flex;
   flex-direction: column;
-  align-items: center;
   width: 90%;
   padding: 1%;
   padding-bottom: 4%;
@@ -75,9 +77,8 @@
 }
 
 .modal_admin {
-  display: flex;
+  @include flex;
   flex-direction: column;
-  align-items: center;
 }
 
 .biography_info {
