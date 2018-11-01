@@ -1,18 +1,26 @@
 .bio {
   display: flex;
+  img {
+    height: 90vh;
+    margin-left: 5vw;
+  }
+  h1 {
+    text-align: center;
+  }
+  a {
+    color: #5050c7;
+  }
+  pre {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
+      'Helvetica Neue', sans-serif;
+    font-size: 0.8em;
+    white-space: pre-wrap;
+  }
 }
 
 .image_cont {
   width: 30vw;
-}
-
-.bio img {
-  height: 90vh;
-  margin-left: 5vw;
-}
-
-.bio h1 {
-  text-align: center;
 }
 
 .bio_right {
@@ -28,28 +36,10 @@
   padding: 2%;
   margin: 2%;
   font-size: 0.9em;
-  /* left: -5vw; */
   top: 25vh;
   width: 60vw;
   background: #fff;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-/* .bio_text p {
-  margin-bottom: 4%;
-} */
-
-.bio pre {
-  /* font-family: 'Raleway', sans-serif; */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  font-size: 0.8em;
-  white-space: pre-wrap;
-}
-
-.bio a {
-  color: #5050c7;
 }

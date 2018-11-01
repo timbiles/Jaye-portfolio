@@ -1,6 +1,4 @@
-:root {
-  --main-color: #56a082;
-}
+$primary-color: #56a082;
 
 .nav {
   display: flex;
@@ -12,35 +10,33 @@
   width: 70%;
   display: flex;
   justify-content: space-evenly;
-  align-items: center;  
+  align-items: center;
 }
 
-.links,
-.active_links {
+.links {
   color: #000;
   text-decoration: none;
-  font-size: .8em;
+  font-size: 0.8em;
   letter-spacing: 1.5px;
+}
+
+.active_links{
+  @extend .links;
+  border-bottom: 1px solid $primary-color;
+  border-top: 1px solid $primary-color;
 }
 
 .links:hover,
 .ma_nav p:hover {
-    color: var(--main-color);
-}
-
-.active_links {
-    border-bottom: 1px solid var(--main-color);
-    border-top: 1px solid var(--main-color);
-}
-
-button:focus {
-  outline: none;
+  color: $primary-color;
 }
 
 button {
   cursor: pointer;
-}
-
-button:active{
-  transform: scale(.98);  
+  &:focus {
+    outline: none;
+  }
+  &:active {
+    transform: scale(0.98);
+  }
 }

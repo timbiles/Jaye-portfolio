@@ -1,43 +1,40 @@
 .home {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 90vh;
-    width: 100vw;
-}
-
-.home_name {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    height: 50vh;
-}
-
-.home h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 90vh;
+  width: 100vw;
+  h1 {
     font-family: 'Raleway', sans-serif;
     font-size: 3em;
     font-weight: 100;
     display: inline-block;
     margin: 1%;
-}
-
-.name_ab {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    bottom: 0;
-}
-
-.home p {
+  }
+  p {
     background: #fff;
     margin: 1% 2%;
     padding: 0 2%;
     font-size: 3.5em;
     font-weight: 400;
     width: max-content;
-}
-
-.home img {
+  }
+  img {
     height: 90vh;
     width: 60vw;
+  }
+}
+
+.home_name {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 50vh;
+}
+
+.name_ab {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
 }
