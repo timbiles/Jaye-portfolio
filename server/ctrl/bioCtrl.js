@@ -1,8 +1,7 @@
 const getBio = (req, res) => {
     const db = req.app.get('db');
   
-    db.bio
-      .get_bio()
+    db.query('select * from bios')
       .then(resp => {
         res.status(200).send(resp);
       })
@@ -14,8 +13,7 @@ const getBio = (req, res) => {
   const editBio = (req, res) => {
     const db = req.app.get('db');
   
-    db.bio
-      .edit_bio(req.body.bio)
+    db.bios.save({id: 1, biography: req.body.bio})
       .then(resp => {
         res.status(200).send(resp);
       })

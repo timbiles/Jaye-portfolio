@@ -5,8 +5,7 @@ const submitContacts = (req, res) => {
 const getEvents = (req, res) => {
   const db = req.app.get('db');
 
-  db.events
-    .get_events()
+  db.query(`select * from jaye_calendar order by date`)
     .then(resp => {
       res.status(200).send(resp);
     })
@@ -17,9 +16,8 @@ const getEvents = (req, res) => {
 
 const addEvent = (req, res) => {
   const db = req.app.get('db');
-  const { event, date, location } = req.body;
 
-  db.events.add_event([event, date, location])
+  db.jaye_calendar.insert(req.body)
     .then(resp => {
       res.status(200).send(resp);
     })
@@ -31,7 +29,7 @@ const addEvent = (req, res) => {
 const removeEvent = (req, res) => {
     const db = req.app.get('db');
   
-    db.events.remove_event([req.params.id])
+    db.jaye_calendar.destroy({id: req.params.id})
       .then(resp => {
         res.status(200).send(resp);
       })

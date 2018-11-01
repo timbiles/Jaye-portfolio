@@ -6,7 +6,7 @@ const session = require('express-session');
 const path = require('path');
 
 const port = process.env.SERVER_PORT || 3004;
-const {submitContacts, getEvents, addEvent, removeEvent} = require('./ctrl/ctrl');
+const {submitContacts, getEvents, addEvent, removeEvent} = require('./ctrl/eventCtrl');
 const { getBio, editBio } = require('./ctrl/bioCtrl');
 
 const app = express();

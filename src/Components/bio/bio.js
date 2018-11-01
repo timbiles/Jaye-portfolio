@@ -20,14 +20,14 @@ class bio extends Component {
         .replace(/<br>/gi, '\n')
         .replace(/<div>/gi, '\n')
         .replace(/<\/div>/gi, '')
-        .replace(/&nbsp;/gi, '')
+        .replace(/&nbsp;/gi, '');
       this.setState({ bio: bio });
     });
   }
 
   render() {
     const { bio } = this.state;
-    const web = <a href="http://www.thenostalgics.org/">thenostalgics.org</a>
+    const web = <a href="http://www.thenostalgics.org/">thenostalgics.org</a>;
 
     return (
       <div className="bio">
@@ -38,22 +38,15 @@ class bio extends Component {
           <h1>About</h1>
           {bio && (
             <div className="bio_text">
-              <pre>{bio}
-              </pre>
-              <pre>{`
-
+              <pre>{bio}</pre>
+              <pre>
+                {`
 Check out my band's website here!
-`}{web}
-                </pre>
+`}
+                {web}
+              </pre>
             </div>
-
-            
           )}
-          {/* <pre>
-
-                <a href="http://www.thenostalgics.org/">click me</a>
-
-          </pre> */}
         </div>
       </div>
     );
