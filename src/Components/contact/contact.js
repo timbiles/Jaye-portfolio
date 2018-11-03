@@ -35,7 +35,7 @@ class form extends Component {
       <div className="contact">
         <h1>Contact</h1>
         <div className="contact_main">
-          <h2>Need a singer?</h2>
+          <h2>Need an entertainer?</h2>
           <h4>Send me a message, let's get started!</h4>
           <div className="contact_sub">
             {inputMap}
