@@ -37,7 +37,7 @@ class bio extends Component {
         if (counter === imageList.length) {
           counter = 0;
         }
-      }, 4000);
+      }, 5000);
     }
   };
 
@@ -58,10 +58,6 @@ class bio extends Component {
     console.log(style);
     const web = <a href="http://www.thenostalgics.org/">thenostalgics.org</a>;
 
-    // const imageMap = images.map((e, i) => {
-    //   return <img className="i" key={i} src={e} alt={e} />;
-    // });
-
     return (
       <div className="bio">
         <div className="image_cont">
@@ -81,9 +77,9 @@ Check out my band's website here!
             </div>
           )}
 
-          <div className={style ? 'image_scroll' : 'image_scroll2'}>
-            {/* <img src={this.state.image} alt="Image scroll" /> */}
-          </div>
+
+            <img className={style ? 'image_scroll' : 'image_scroll2'} src={this.state.image} alt="Image scroll" />
+
         </div>
       </div>
     );
