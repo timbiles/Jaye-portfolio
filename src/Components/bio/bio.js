@@ -82,7 +82,7 @@ Check out my band's website here!
           )}
 
           <div className={style ? 'image_scroll' : 'image_scroll2'}>
-            <img src={this.state.image} alt="Image scroll" />
+            {/* <img src={this.state.image} alt="Image scroll" /> */}
           </div>
         </div>
       </div>
