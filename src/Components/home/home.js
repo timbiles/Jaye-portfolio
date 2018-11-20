@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import './home.scss';
 import family from '../files/family.jpg';
-// import main from '../files/main.png'
 
 class home extends Component {
   render() {

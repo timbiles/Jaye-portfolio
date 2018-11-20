@@ -55,7 +55,6 @@ class bio extends Component {
 
   render() {
     const { bio, images, style } = this.state;
-    console.log(style);
     const web = <a href="http://www.thenostalgics.org/">thenostalgics.org</a>;
 
     return (

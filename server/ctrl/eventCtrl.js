@@ -1,5 +1,5 @@
 const submitContacts = (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
 };
 
 const getEvents = (req, res) => {
