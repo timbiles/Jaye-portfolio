@@ -31,7 +31,6 @@ class eventMap extends Component {
       return (
         <div className={this.props.styling} key={i}>
           <p>{moment.utc(e.date).format('D MMM')}</p>
-          {/* <p>{e.date}</p> */}
           <p>{e.event}</p>
           <p>{e.location}</p>
           {this.props.edit && (
