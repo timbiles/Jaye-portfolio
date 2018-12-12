@@ -31,6 +31,10 @@ class admin extends Component {
       });
   };
 
+  handleEnter= (e) => {
+    this.handleLogin()
+  }
+
   render() {
     const { login, err } = this.state;
     return !login ? (
@@ -63,6 +67,7 @@ class admin extends Component {
               <input
                 type="password"
                 onChange={e => this.setState({ pass: e.target.value })}
+                onKeyDown={e => e.key === 'Enter' && this.handleEnter(e)}
               />
             </div>
             <button onClick={() => this.handleLogin()}>Log In</button>
