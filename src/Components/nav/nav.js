@@ -21,10 +21,13 @@ class nav extends Component {
       );
     });
     return (
+      <>
+      <h1 className='nav_title'>Jaye Biles</h1>
       <div className="nav">
         <div className="link_holder">{linkMap}</div>
         <span />
       </div>
+      </>
     );
   }
 }

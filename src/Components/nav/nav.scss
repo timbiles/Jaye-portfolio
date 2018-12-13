@@ -13,10 +13,14 @@ $primary-color: #56a082;
     bottom: 0;
     width: 75%;
     height: 1px;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid #bdbdbd;
   }
 }
 
+.nav_title {
+  margin-top: 5vh;
+  font-family: 'Montserrat', sans-serif;
+}
 .link_holder {
   width: 60%;
   display: flex;
@@ -34,7 +38,7 @@ $primary-color: #56a082;
   letter-spacing: 1.5px;
 }
 
-.active_links{
+.active_links {
   @extend .links;
   border-bottom: 1px solid $primary-color;
   border-top: 1px solid $primary-color;

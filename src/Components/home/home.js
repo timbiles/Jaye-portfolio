@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import styled, {keyframes} from 'styled-components';
 
 import './home.scss';
+import musicStaff from './staff.png'
 
 // import Eighth from '../musicNotes/EighthNotes';
 import jaye from '../files/jaye.JPG';
@@ -11,8 +12,8 @@ class home extends Component {
     return (
       <>
         <div className='home'>
-          <h1>Jaye Biles</h1>
           <img src={jaye} alt=""/>
+          <img className='staff' src={musicStaff} alt=""/>
         </div>
       </>
     );

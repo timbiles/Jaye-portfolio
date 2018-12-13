@@ -9,7 +9,6 @@ class events extends Component {
     return (
       <div className="events">
         <div className="events_top">
-          <h1>Jaye Biles</h1>
           <h1>Upcoming Events</h1>
         </div>
         <div className="tour">
