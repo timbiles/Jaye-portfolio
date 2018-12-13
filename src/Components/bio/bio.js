@@ -32,7 +32,7 @@ class bio extends Component {
       }
       setInterval(() => {
         newImage = imageList[counter];
-        this.setState({ image: newImage, style: !this.state.style });
+        this.setState({ image: newImage, style: !style });
         counter++;
         if (counter === imageList.length) {
           counter = 0;
@@ -54,7 +54,7 @@ class bio extends Component {
   }
 
   render() {
-    const { bio, images, style } = this.state;
+    const { bio, style } = this.state;
     const web = <a href="http://www.thenostalgics.org/">thenostalgics.org</a>;
 
     return (
@@ -77,7 +77,7 @@ Check out my band's website here!
           )}
 
 
-            <img className={style ? 'image_scroll' : 'image_scroll2'} src={this.state.image} alt="Image scroll" />
+            <img className={style ? 'image_scroll' : 'image_scroll2'} src={this.state.image} alt="Carousel" />
 
         </div>
       </div>

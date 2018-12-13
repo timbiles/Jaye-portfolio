@@ -40,7 +40,11 @@ class input extends Component {
               handleChange(e);
               this.setState({ phoneNum: e.target.value });
             }}
-            onBlur={() => this.updateNum()}
+            onFocus={() => this.setState({click: true})}
+            onBlur={() => {
+              this.updateNum()
+              this.setState({click: false})
+            }}
           />
         ) : (
           <input

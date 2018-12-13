@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import styled, {keyframes} from 'styled-components';
+// import styled, {keyframes} from 'styled-components';
 
-import Nav from '../nav/nav'
 import './home.scss';
 
-import Eighth from '../musicNotes/EighthNotes';
+// import Eighth from '../musicNotes/EighthNotes';
 import jaye from '../files/jaye.JPG';
 
 class home extends Component {
@@ -13,7 +12,7 @@ class home extends Component {
       <>
         <div className='home'>
           <h1>Jaye Biles</h1>
-          {/* <img src={jaye} alt=""/> */}
+          <img src={jaye} alt=""/>
         </div>
       </>
     );
@@ -22,31 +21,31 @@ class home extends Component {
 
 export default home;
 
-const falling = keyframes`
-0% {
-  transform: translateY(-100vh);
-  opacity: 0;
-}
+// const falling = keyframes`
+// 0% {
+//   transform: translateY(-100vh);
+//   opacity: 0;
+// }
 
-20% {
-  opacity: 0;
-}
+// 20% {
+//   opacity: 0;
+// }
 
-50% {
-  opacity: 1
-}
+// 50% {
+//   opacity: 1
+// }
 
-70% {
-  opacity: 0;
-}
-100% {
-  transform: translateY(100vh);
-  opacity: 0;
-}
-`
+// 70% {
+//   opacity: 0;
+// }
+// 100% {
+//   transform: translateY(100vh);
+//   opacity: 0;
+// }
+// `
 
-const Container = styled.div`
-  width: 40px;
-  height: 40px;
-  animation: ${falling} 10s;
-`
+// const Container = styled.div`
+//   width: 40px;
+//   height: 40px;
+//   animation: ${falling} 10s;
+// `

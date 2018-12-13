@@ -8,7 +8,6 @@ class nav extends Component {
     links: ['', 'About', 'Music', 'Events', 'Contact']
   };
   render() {
-    console.log(window.location.pathname);
     const { pathname } = window.location;
     const linkMap = this.state.links.map((e, i) => {
       return (
@@ -24,7 +23,7 @@ class nav extends Component {
     return (
       <div className="nav">
         <div className="link_holder">{linkMap}</div>
-        <span></span>
+        <span />
       </div>
     );
   }

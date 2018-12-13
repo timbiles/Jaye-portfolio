@@ -8,6 +8,7 @@ import './contact.scss';
 class form extends Component {
   state = {
     click: false,
+    completed: true,
     name: '',
     email: '',
     phone: '',
@@ -22,11 +23,14 @@ class form extends Component {
 
   submit = () => {
       const {name, email, phone, date, location, desc} = this.state
-    axios.put('/api/contacts', {name, email, phone, date, location, desc})
+
+    name === '' || email === '' || phone === '' || date == '' || location === '' || desc === '' 
+      ? this.setState({completed: false})
+      : axios.put('/api/contacts', {name, email, phone, date, location, desc}).then(() => this.setState({completed: true}))
   }
 
   render() {
-    const { click } = this.state;
+    const { click, completed } = this.state;
     const inputMap = data.map((e, i) => {
       return <Input key={i} e={e} handleChange={this.handleChange}/>;
     });
@@ -51,6 +55,7 @@ class form extends Component {
               onChange={e=> this.setState({desc: e.target.value})}
             />
             <button onClick={()=> this.submit()}>Contact Now</button>
+    {!completed && <p className='error'>** Please fill out each input field.</p> }
           </div>
         </div>
       </div>
