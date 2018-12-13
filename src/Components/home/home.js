@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled, {keyframes} from 'styled-components';
 
+import Nav from '../nav/nav'
 import './home.scss';
 
 import Eighth from '../musicNotes/EighthNotes';
@@ -9,23 +10,12 @@ import jaye from '../files/jaye.JPG';
 class home extends Component {
   render() {
     return (
-      <div className="home">
-        <div className="home_name">
-          <h1>Jaye</h1>
-          <h1>Biles</h1>
-          <div className='name_ab'>
-            <p>Worshiper</p>
-            <p>Singer</p>
-            <p>Performer</p>
-          </div>
+      <>
+        <div className='home'>
+          <h1>Jaye Biles</h1>
+          {/* <img src={jaye} alt=""/> */}
         </div>
-        <div>
-          <img src={jaye} alt="Family pic" />
-        </div>
-        <Container>
-          <Eighth />
-        </Container>
-      </div>
+      </>
     );
   }
 }

@@ -2,15 +2,29 @@ $primary-color: #56a082;
 
 .nav {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   height: 10vh;
+  position: relative;
+
+  span {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    width: 75%;
+    height: 1px;
+    border-bottom: 1px solid grey;
+  }
 }
 
 .link_holder {
-  width: 70%;
+  width: 60%;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  z-index: 99;
+  position: relative;
+  background: #fff;
 }
 
 .links {

@@ -36,7 +36,7 @@ class form extends Component {
         <h1>Contact</h1>
         <div className="contact_main">
           <h2>Need an entertainer?</h2>
-          <h4>Send me a message, let's get started!</h4>
+          <h4>Send Jaye a message to get started!</h4>
           <div className="contact_sub">
             {inputMap}
             <p className={click ? 'focus_p' : ''}>Description of Event</p>
