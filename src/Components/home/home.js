@@ -13,7 +13,7 @@ class home extends Component {
       <>
         <div className='home'>
           <img src={jaye} alt=""/>
-          <img className='staff' src={musicStaff} alt=""/>
+          {/* <img className='staff' src={musicStaff} alt=""/> */}
         </div>
       </>
     );

@@ -5,6 +5,8 @@
 
 .main_admin {
   min-height: 90vh;
+  padding-top: 2vh;
+  border-top: 1px solid #dcdcdc;  
   display: flex;
   input {
     border: 1px solid #000;
@@ -15,7 +17,7 @@
   @include flex;
   flex-direction: column;
   width: 15vw;
-  border-right: 1px solid grey;
+  border-right: 1px solid #dcdcdc;
   p {
     cursor: pointer;
     width: max-content;
