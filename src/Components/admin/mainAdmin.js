@@ -6,8 +6,6 @@ import './mainAdmin.scss';
 import EventMap from '../tools/eventMap/eventMap';
 import Modal from '../tools/modal/modal';
 
-import EditMusic from './editMusic';
-
 class MainAdmin extends Component {
   state = {
     show: false,
@@ -22,7 +20,6 @@ class MainAdmin extends Component {
     location: '',
     bio: '',
     input: ['Event', 'Date', 'Location'],
-    order: []
   };
 
   componentDidMount() {
@@ -55,20 +52,6 @@ class MainAdmin extends Component {
       this.setState({ add: true, show: false });
     });
   };
-
-  addOrder = (str, a) => {
-    // let arr = [];
-
-    // arr.push(a);
-    str === 'music' &&
-    this.setState({ editMusic: true, toggleMusicEdit: !this.state.toggleMusicEdit, order: [...this.state.order, <EditMusic toggleMusicEdit={this.state.toggleMusicEdit} editMusic={this.state.editMusic}/>] })
-
-  };
-
-  // this.setState({
-  //   editMusic: true,
-  //   toggleMusicEdit: !toggleMusicEdit
-  // })
 
   render() {
     const {
@@ -109,9 +92,13 @@ class MainAdmin extends Component {
           >
             Music
           </p>
-          <p onClick={() => this.setState({editBio: true, toggleEdit: !toggleEdit})}>Edit Bio</p>
-          {/* <p onClick={() => this.addOrder('music')}>Edit Music</p>          
-          <p onClick={() => this.addOrder('bio', showBio)}>Edit Bio</p> */}
+          <p
+            onClick={() =>
+              this.setState({ editBio: true, toggleEdit: !toggleEdit })
+            }
+          >
+            Edit Bio
+          </p>
         </div>
         <div className="ma_events">
           <div className="ma_events_top">
@@ -119,34 +106,35 @@ class MainAdmin extends Component {
             <EventMap styling="admin_events_map" add={add} edit={edit} />
           </div>
 
-      <div className="ma_events_btm">
-        {editBio && (
-          <div
-            className={toggleEdit ? 'biography_info' : 'biography_info_exit'}
-          >
-            <h4>Biography</h4>
-            <ContentEditable
-              html={bio && bio[0].biography}
-              onChange={e => this.updateBio(e.target.value)}
-              className="admin_bio"
-            />
+          <div className="ma_events_btm">
+            {editBio && (
+              <div
+                className={
+                  toggleEdit ? 'biography_info' : 'biography_info_exit'
+                }
+              >
+                <h4>Biography</h4>
+                <ContentEditable
+                  html={bio && bio[0].biography}
+                  onChange={e => this.updateBio(e.target.value)}
+                  className="admin_bio"
+                />
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    
-      <div className="ma_events_btm">
-        {editMusic && (
-          <div
-            className={
-              toggleMusicEdit ? 'biography_info' : 'biography_info_exit'
-            }
-          >
-            <h4>Music</h4>
-            <p>This is where music stuff will go...</p>
+
+          <div className="ma_events_btm">
+            {editMusic && (
+              <div
+                className={
+                  toggleMusicEdit ? 'biography_info' : 'biography_info_exit'
+                }
+              >
+                <h4>Music</h4>
+                <p>This is where music stuff will go...</p>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    
         </div>
         <Modal handleClose={this.handleClose} show={this.state.show}>
           <div className="modal_admin">
