@@ -5,6 +5,7 @@ const submitContacts = (req, res) => {
 
 const getEvents = (req, res) => {
   const db = req.app.get('db');
+  console.log('hit meeee')
 
   db.query(`select * from jaye_calendar order by date`)
     .then(resp => {
@@ -15,20 +16,20 @@ const getEvents = (req, res) => {
     });
 };
 
-const addEvent = (req, res) => {
+const addEvent = async (req, res, next) => {
   const db = req.app.get('db');
 
-  db.jaye_calendar.insert(req.body)
-    .then(resp => {
-      res.status(200).send(resp);
-    })
-    .catch(err => {
-      res.status(500).send(err);
-    });
+  try {
+    await db.jaye_calendar.insert(req.body)
+    res.sendStatus(200)
+  } catch(err) {
+    res.status(500).send(err);
+  }
 };
 
 const removeEvent = (req, res) => {
     const db = req.app.get('db');
+    console.log(req.params)
   
     db.jaye_calendar.destroy({id: req.params.id})
       .then(resp => {
