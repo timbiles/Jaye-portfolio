@@ -5,4 +5,4 @@
 - Worship Leader
 
 ### Technologies
-- JavaScript, React, Node, Express, Styled Componenet, Moment, Custom-modal
+- JavaScript, React, Node, Express, Styled Component, Moment, Custom-modal
