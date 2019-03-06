@@ -15,7 +15,7 @@ const getEvents = (req, res) => {
     });
 };
 
-const addEvent = async (req, res, next) => {
+const addEvent = async (req, res) => {
   const db = req.app.get('db');
 
   try {
