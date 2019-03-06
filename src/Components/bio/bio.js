@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import sing from '../files/sing.png';
+import sing from '../../assets/images/sing.png';
 import './bio.scss';
 
 class bio extends Component {
