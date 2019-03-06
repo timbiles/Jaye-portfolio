@@ -31,7 +31,7 @@ class admin extends Component {
       });
   };
 
-  handleEnter= (e) => {
+  handleEnter= () => {
     this.handleLogin()
   }
 

@@ -22,7 +22,6 @@ class bio extends Component {
 
   imageSlider = () => {
     const { image, imageList, style } = this.state;
-    let newImage;
     let counter = 0;
 
     if (counter <= imageList.length) {
@@ -31,7 +30,7 @@ class bio extends Component {
         counter++;
       }
       this.timer = setInterval(() => {
-        newImage = imageList[counter];
+        let newImage = imageList[counter];
         this.setState({ image: newImage, style: !style });
         counter++;
         if (counter === imageList.length) {
