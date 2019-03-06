@@ -5,7 +5,6 @@ const submitContacts = (req, res) => {
 
 const getEvents = (req, res) => {
   const db = req.app.get('db');
-  console.log('hit meeee')
 
   db.query(`select * from jaye_calendar order by date`)
     .then(resp => {
@@ -29,7 +28,6 @@ const addEvent = async (req, res, next) => {
 
 const removeEvent = (req, res) => {
     const db = req.app.get('db');
-    console.log(req.params)
   
     db.jaye_calendar.destroy({id: req.params.id})
       .then(resp => {
