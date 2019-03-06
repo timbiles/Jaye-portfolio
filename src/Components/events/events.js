@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 import './events.scss';
 import EventMap from '../tools/eventMap/eventMap';

@@ -1,6 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const modal = ({ handleClose, show, children }) => {
+  return (
+    show && (
+      <Container id='modal' onClick={e => handleClose(e)}>
+        <Section>
+          {children}
+        </Section>
+      </Container>
+    )
+  );
+};
+
+export default modal;
+
 const Container = styled.div`
   position: fixed;
   top: 0;
@@ -22,17 +36,3 @@ const Section = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
 `;
-
-const modal = ({ handleClose, show, children }) => {
-  return (
-    show && (
-      <Container id='modal' onClick={e => handleClose(e)}>
-        <Section>
-          {children}
-        </Section>
-      </Container>
-    )
-  );
-};
-
-export default modal;
