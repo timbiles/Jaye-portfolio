@@ -51,7 +51,7 @@ class input extends Component {
             name={e.name}
             type="text"
             autoComplete='off'            
-            onChange={e => handleChange(e)}
+            onChange={handleChange}
             onFocus={() => this.setState({ click: true })}
             onBlur={() => this.setState({ click: false })}
           />

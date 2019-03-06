@@ -1,20 +1,14 @@
 import React from 'react';
 import { Route, Switch} from 'react-router-dom';
 
-import About from './Components/bio/bio';
-import Admin from './Components/admin/admin';
-import Contact from './Components/contact/contact';
-import Events from './Components/events/events';
-import Home from './Components/home/home';
-import Music from './Components/music/music';
+import { ROUTE } from './assets/routes';
+
+const routeMap = Object.keys(ROUTE).map((el, i) => {
+    return <Route key={i} exact path={el === 'Home' ? '/' : `/${el}`} component={ROUTE[el]}/>
+})
 
 export default (
     <Switch>
-        <Route path='/about' component={About} />
-        <Route path='/admin' component={Admin} />                                                  
-        <Route path='/contact' component={Contact} />  
-        <Route path='/events' component={Events} />  
-        <Route path='/music' component={Music} />          
-        <Route exact path='/' component={Home} />
+        {routeMap}
     </Switch>
 )

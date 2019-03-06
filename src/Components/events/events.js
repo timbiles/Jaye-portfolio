@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import './events.scss';
 import EventMap from '../tools/eventMap/eventMap';
 
-class events extends Component {
+const events = () => {
 
-  render() {
     return (
       <div className="events">
         <div className="events_top">
@@ -21,6 +20,4 @@ class events extends Component {
       </div>
     );
   }
-}
-
 export default events;

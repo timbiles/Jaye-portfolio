@@ -30,7 +30,7 @@ class bio extends Component {
         this.setState({ image: imageList[0] });
         counter++;
       }
-      setInterval(() => {
+      this.timer = setInterval(() => {
         newImage = imageList[counter];
         this.setState({ image: newImage, style: !style });
         counter++;
@@ -40,6 +40,10 @@ class bio extends Component {
       }, 5000);
     }
   };
+
+  componentWillUnmount(){
+    clearTimeout(this.timer)
+  }
 
   getBio() {
     axios.get('/api/biography').then(res => {

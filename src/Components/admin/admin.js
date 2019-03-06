@@ -70,7 +70,7 @@ class admin extends Component {
                 onKeyDown={e => e.key === 'Enter' && this.handleEnter(e)}
               />
             </div>
-            <button onClick={() => this.handleLogin()}>Log In</button>
+            <button onClick={this.handleLogin}>Log In</button>
             {err && <p>**Invalid username, please try again.</p>}
           </div>
         </div>
