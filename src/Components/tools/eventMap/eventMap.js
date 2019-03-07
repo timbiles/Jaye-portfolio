@@ -1,50 +1,49 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React, { useState } from 'react';
 import moment from 'moment';
+import { Query } from 'react-apollo';
+import gql from 'graphql-tag';
 
-class eventMap extends Component {
-  state = {
-    events: [],
-    change: false
-  };
+import CancelEvent from '../mutations/CancelEvent';
 
-  componentDidMount() {
-    this.getEvents();
-  }
-  
-  componentWillReceiveProps(nextProps) {
-    nextProps.add && this.getEvents();
-  }
-
-  getEvents = async () => {
-    let event = await axios.get('/api/events')
-    this.setState({ events: event.data })
-  };
-
-  removeEvent = async e => {
-    try{
-      await axios.delete(`/api/events/${e.id}`);
-      await this.getEvents();
-    } catch(err) {
-      console.log(err)
+const GET_EVENTS = gql`
+  query events {
+    events {
+      id
+      event
+      date
+      location
     }
-  };
-
-  render() {
-    const eventsMap = this.state.events.map((el, i) => {
-      return (
-        <div className={this.props.styling} key={i}>
-          <p>{moment.utc(el.date).format('D MMM')}</p>
-          <p>{el.event}</p>
-          <p>{el.location}</p>
-          {this.props.edit && (
-            <button onClick={() => this.removeEvent(el)}>X</button>
-          )}
-        </div>
-      );
-    });
-    return <div>{eventsMap}</div>;
   }
-}
+`;
+
+const eventMap = (props) => {
+  const [events, setEvents] = useState([])
+
+    return (
+      <Query query={GET_EVENTS}>
+        {({ loading, data, error }) => {
+          if (loading) {
+            return <h1>Loading...</h1>;
+          }
+          if (error) {
+            return <h1>THERE WAS AN ERROR</h1>;
+          }
+          setEvents(data.events)
+          return events.map((el, i) => {
+            return (
+              <div className={props.styling} key={i}>
+                <p>{moment.utc(el.date).format('D MMM')}</p>
+                <p>{el.event}</p>
+                <p>{el.location}</p>
+                {props.edit && (
+                  <CancelEvent id={el.id}/>
+                )}
+              </div>
+            );
+          });
+        }}
+      </Query>
+    );
+  }
 
 export default eventMap;

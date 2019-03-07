@@ -3,23 +3,19 @@ import axios from 'axios';
 import ContentEditable from 'react-contenteditable';
 
 import './mainAdmin.scss';
+import AddEvent from '../tools/mutations/AddEvent';
 import EventMap from '../tools/eventMap/eventMap';
 import Modal from '../tools/modal/modal';
 
 class MainAdmin extends Component {
   state = {
     show: false,
-    add: false,
     edit: true,
     editBio: false,
     toggleEdit: false,
     editMusic: false,
     toggleMusicEdit: false,
-    event: '',
-    date: '',
-    location: '',
     bio: '',
-    input: ['Event', 'Date', 'Location']
   };
 
   componentDidMount() {
@@ -30,10 +26,6 @@ class MainAdmin extends Component {
     if (e.target.id === 'modal') {
       this.setState({ show: false });
     }
-  };
-
-  updateInput = e => {
-    this.setState({ [e.target.name]: e.target.value });
   };
 
   async getBio() {
@@ -49,11 +41,9 @@ class MainAdmin extends Component {
     axios.put('/api/biography', { bio: val });
   };
 
-  submitEvent = async () => {
-    const { event, date, location } = this.state;
-    await axios.post('/api/events', { event, date, location });
-    this.setState({ add: true, show: false });
-  };
+  closeModal = () => {
+    this.setState({ show: false });
+  }
 
   render() {
     const {
@@ -66,19 +56,6 @@ class MainAdmin extends Component {
       editMusic,
       toggleMusicEdit
     } = this.state;
-
-    const eventInputs = input.map((el, i) => {
-      return (
-        <div className="events_mapper" key={i}>
-          <p>{el}</p>
-          <input
-            type="text"
-            name={el.toLowerCase()}
-            onChange={this.updateInput}
-          />
-        </div>
-      );
-    });
 
     return (
       <div className="main_admin">
@@ -105,7 +82,7 @@ class MainAdmin extends Component {
         <div className="ma_events">
           <div className="ma_events_top">
             <h2>Events</h2>
-            <EventMap styling="admin_events_map" add={add} edit={edit} />
+            <EventMap styling="admin_events_map" edit={edit} />
           </div>
 
           <div className="ma_events_btm">
@@ -140,8 +117,7 @@ class MainAdmin extends Component {
         </div>
         <Modal handleClose={this.handleClose} show={this.state.show}>
           <div className="modal_admin">
-            {eventInputs}
-            <button onClick={this.submitEvent}>Add Event</button>
+            <AddEvent closeModal={this.closeModal}/>
           </div>
         </Modal>
       </div>
