@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import GetBio from '../tools/queries/GetBio';
 
 import sing from '../../assets/images/sing.png';
 import './bio.scss';
 
 class bio extends Component {
   state = {
-    bio: '',
     image: '',
     imageList: [
       'https://images-na.ssl-images-amazon.com/images/I/41sfz8dKX1L.jpg',
@@ -16,7 +15,6 @@ class bio extends Component {
   };
 
   componentDidMount() {
-    this.getBio();
     this.imageSlider();
   }
 
@@ -44,21 +42,8 @@ class bio extends Component {
     clearTimeout(this.timer)
   }
 
-  getBio() {
-    axios.get('/api/biography').then(res => {
-      const { biography } = res.data[0];
-      const bio = biography
-        .replace(/<br>/gi, '\n')
-        .replace(/<div>/gi, '\n')
-        .replace(/<\/div>/gi, '')
-        .replace(/&nbsp;/gi, '');
-      this.setState({ bio: bio });
-    });
-  }
-
   render() {
-    const { bio, style } = this.state;
-    const web = <a href="http://www.thenostalgics.org/">thenostalgics.org</a>;
+    const { style } = this.state;
 
     return (
       <div className="bio">
@@ -67,19 +52,7 @@ class bio extends Component {
         </div>
         <div className="bio_right">
           <h1>About</h1>
-          {bio && (
-            <div className="bio_text">
-              <pre>{bio}</pre>
-              <pre>
-                {`
-Check out my band's website here!
-`}
-                {web}
-              </pre>
-            </div>
-          )}
-
-
+            <GetBio />
             <img className={style ? 'image_scroll' : 'image_scroll2'} src={this.state.image} alt="Carousel" />
 
         </div>

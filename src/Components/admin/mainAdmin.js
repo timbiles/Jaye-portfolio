@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import ContentEditable from 'react-contenteditable';
 
 import './mainAdmin.scss';
 import AddEvent from '../tools/mutations/AddEvent';
+import GetBio from '../tools/queries/GetBio';
 import EventMap from '../tools/eventMap/eventMap';
 import Modal from '../tools/modal/modal';
 
@@ -15,30 +14,12 @@ class MainAdmin extends Component {
     toggleEdit: false,
     editMusic: false,
     toggleMusicEdit: false,
-    bio: '',
   };
-
-  componentDidMount() {
-    this.getBio();
-  }
 
   handleClose = e => {
     if (e.target.id === 'modal') {
       this.setState({ show: false });
     }
-  };
-
-  async getBio() {
-    try {
-      let bio = await axios('/api/biography');
-      this.setState({ bio: bio.data });
-    } catch (err) {
-      console.log('Error retrieving biography information.', err)
-    }
-  }
-
-  updateBio = val => {
-    axios.put('/api/biography', { bio: val });
   };
 
   closeModal = () => {
@@ -47,10 +28,7 @@ class MainAdmin extends Component {
 
   render() {
     const {
-      add,
       edit,
-      bio,
-      input,
       editBio,
       toggleEdit,
       editMusic,
@@ -93,11 +71,7 @@ class MainAdmin extends Component {
                 }
               >
                 <h4>Biography</h4>
-                <ContentEditable
-                  html={bio && bio[0].biography}
-                  onChange={e => this.updateBio(e.target.value)}
-                  className="admin_bio"
-                />
+                <GetBio admin/>
               </div>
             )}
           </div>
