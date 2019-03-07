@@ -21,12 +21,15 @@ class form extends Component {
       this.setState({[e.target.name]: e.target.value})
   }
 
-  submit = () => {
+  submit = async () => {
       const {name, email, phone, date, location, desc} = this.state
 
-    name === '' || email === '' || phone === '' || date == '' || location === '' || desc === '' 
-      ? this.setState({completed: false})
-      : axios.put('/api/contacts', {name, email, phone, date, location, desc}).then(() => this.setState({completed: true}))
+    if (!name || !email || !phone || !date || !location || !desc) {
+      this.setState({completed: false})
+    } else {
+      await axios.put('/api/contacts', {name, email, phone, date, location, desc})
+      this.setState({completed: true})
+    }
   }
 
   render() {
@@ -55,7 +58,7 @@ class form extends Component {
               onChange={e=> this.setState({desc: e.target.value})}
             />
             <button onClick={()=> this.submit()}>Contact Now</button>
-    {!completed && <p className='error'>** Please fill out each input field.</p> }
+            {!completed && <p className='error'>** Please fill out each input field.</p> }
           </div>
         </div>
       </div>

@@ -18,21 +18,18 @@ class admin extends Component {
     })
   }
 
-  handleLogin = () => {
+  handleLogin = async () => {
     const { user, pass } = this.state;
-    axios
-      .put('/api/admin', { user, pass })
-      .then(res => {
-        this.setState({ login: true });
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({ err: true });
-      });
+    try {
+      await axios.put('/api/admin', { user, pass })
+      this.setState({ login: true });
+    } catch {
+      this.setState({ err: true });
+    }
   };
 
-  handleEnter= () => {
-    this.handleLogin()
+  handleEnter= (e) => { 
+    e.key === 'Enter' && this.handleLogin()
   }
 
   render() {
@@ -67,7 +64,7 @@ class admin extends Component {
               <input
                 type="password"
                 onChange={e => this.setState({ pass: e.target.value })}
-                onKeyDown={e => e.key === 'Enter' && this.handleEnter(e)}
+                onKeyDown={this.handleEnter}
               />
             </div>
             <button onClick={this.handleLogin}>Log In</button>

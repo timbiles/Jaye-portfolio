@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const modal = ({ handleClose, show, children }) => {
   return (
     show && (
-      <Container id='modal' onClick={e => handleClose(e)}>
+      <Container id='modal' onClick={handleClose}>
         <Section>
           {children}
         </Section>

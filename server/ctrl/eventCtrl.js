@@ -15,16 +15,15 @@ const getEvents = (req, res) => {
     });
 };
 
-const addEvent = (req, res) => {
+const addEvent = async (req, res) => {
   const db = req.app.get('db');
 
-  db.jaye_calendar.insert(req.body)
-    .then(resp => {
-      res.status(200).send(resp);
-    })
-    .catch(err => {
-      res.status(500).send(err);
-    });
+  try {
+    await db.jaye_calendar.insert(req.body)
+    res.sendStatus(200)
+  } catch(err) {
+    res.status(500).send(err);
+  }
 };
 
 const removeEvent = (req, res) => {

@@ -19,7 +19,7 @@ class MainAdmin extends Component {
     date: '',
     location: '',
     bio: '',
-    input: ['Event', 'Date', 'Location'],
+    input: ['Event', 'Date', 'Location']
   };
 
   componentDidMount() {
@@ -36,10 +36,13 @@ class MainAdmin extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  getBio() {
-    axios.get('/api/biography').then(res => {
-      this.setState({ bio: res.data });
-    });
+  async getBio() {
+    try {
+      let bio = await axios('/api/biography');
+      this.setState({ bio: bio.data });
+    } catch (err) {
+      console.log('Error retrieving biography information.', err)
+    }
   }
 
   updateBio = val => {
@@ -48,9 +51,8 @@ class MainAdmin extends Component {
 
   submitEvent = async () => {
     const { event, date, location } = this.state;
-    await axios.post('/api/events', { event, date, location }).then(res => {
-      this.setState({ add: true, show: false });
-    });
+    await axios.post('/api/events', { event, date, location });
+    this.setState({ add: true, show: false });
   };
 
   render() {
@@ -72,7 +74,7 @@ class MainAdmin extends Component {
           <input
             type="text"
             name={el.toLowerCase()}
-            onChange={e => this.updateInput(e)}
+            onChange={this.updateInput}
           />
         </div>
       );

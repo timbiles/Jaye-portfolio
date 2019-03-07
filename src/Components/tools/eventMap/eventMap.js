@@ -4,37 +4,41 @@ import moment from 'moment';
 
 class eventMap extends Component {
   state = {
-    events: []
+    events: [],
+    change: false
   };
 
   componentDidMount() {
     this.getEvents();
   }
-
+  
   componentWillReceiveProps(nextProps) {
     nextProps.add && this.getEvents();
   }
 
-  getEvents = () => {
-    axios.get('/api/events').then(res => {
-      this.setState({ events: res.data });
-    });
+  getEvents = async () => {
+    let event = await axios.get('/api/events')
+    this.setState({ events: event.data })
   };
 
   removeEvent = async e => {
-    await axios.delete(`/api/events/${e.id}`);
-    await this.getEvents();
+    try{
+      await axios.delete(`/api/events/${e.id}`);
+      await this.getEvents();
+    } catch(err) {
+      console.log(err)
+    }
   };
 
   render() {
-    const eventsMap = this.state.events.map((e, i) => {
+    const eventsMap = this.state.events.map((el, i) => {
       return (
         <div className={this.props.styling} key={i}>
-          <p>{moment.utc(e.date).format('D MMM')}</p>
-          <p>{e.event}</p>
-          <p>{e.location}</p>
+          <p>{moment.utc(el.date).format('D MMM')}</p>
+          <p>{el.event}</p>
+          <p>{el.location}</p>
           {this.props.edit && (
-            <button onClick={() => this.removeEvent(e)}>X</button>
+            <button onClick={() => this.removeEvent(el)}>X</button>
           )}
         </div>
       );
