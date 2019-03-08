@@ -3,16 +3,15 @@ const submitContacts = (req, res) => {
   res.status(200).send('yup')
 };
 
-const getEvents = (req, res) => {
+const getEvents = async (req, res) => {
   const db = req.app.get('db');
 
-  db.query(`select * from jaye_calendar order by date`)
-    .then(resp => {
-      res.status(200).send(resp);
-    })
-    .catch(err => {
+  try {
+    let calendar = await db.jaye_calendar.find()
+    res.status(200).send(calendar);
+  } catch(err) {
       res.status(500).send(err);
-    });
+  }
 };
 
 const addEvent = async (req, res) => {

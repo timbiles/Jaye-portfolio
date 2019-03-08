@@ -1,30 +1,20 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import ContentEditable from 'react-contenteditable';
 
 import './mainAdmin.scss';
+import AddEvent from '../tools/mutations/AddEvent';
+import GetBio from '../tools/queries/GetBio';
 import EventMap from '../tools/eventMap/eventMap';
 import Modal from '../tools/modal/modal';
 
 class MainAdmin extends Component {
   state = {
     show: false,
-    add: false,
     edit: true,
     editBio: false,
     toggleEdit: false,
     editMusic: false,
     toggleMusicEdit: false,
-    event: '',
-    date: '',
-    location: '',
-    bio: '',
-    input: ['Event', 'Date', 'Location']
   };
-
-  componentDidMount() {
-    this.getBio();
-  }
 
   handleClose = e => {
     if (e.target.id === 'modal') {
@@ -32,53 +22,18 @@ class MainAdmin extends Component {
     }
   };
 
-  updateInput = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
-
-  async getBio() {
-    try {
-      let bio = await axios('/api/biography');
-      this.setState({ bio: bio.data });
-    } catch (err) {
-      console.log('Error retrieving biography information.', err)
-    }
+  closeModal = () => {
+    this.setState({ show: false });
   }
-
-  updateBio = val => {
-    axios.put('/api/biography', { bio: val });
-  };
-
-  submitEvent = async () => {
-    const { event, date, location } = this.state;
-    await axios.post('/api/events', { event, date, location });
-    this.setState({ add: true, show: false });
-  };
 
   render() {
     const {
-      add,
       edit,
-      bio,
-      input,
       editBio,
       toggleEdit,
       editMusic,
       toggleMusicEdit
     } = this.state;
-
-    const eventInputs = input.map((el, i) => {
-      return (
-        <div className="events_mapper" key={i}>
-          <p>{el}</p>
-          <input
-            type="text"
-            name={el.toLowerCase()}
-            onChange={this.updateInput}
-          />
-        </div>
-      );
-    });
 
     return (
       <div className="main_admin">
@@ -105,7 +60,7 @@ class MainAdmin extends Component {
         <div className="ma_events">
           <div className="ma_events_top">
             <h2>Events</h2>
-            <EventMap styling="admin_events_map" add={add} edit={edit} />
+            <EventMap styling="admin_events_map" edit={edit} />
           </div>
 
           <div className="ma_events_btm">
@@ -116,11 +71,7 @@ class MainAdmin extends Component {
                 }
               >
                 <h4>Biography</h4>
-                <ContentEditable
-                  html={bio && bio[0].biography}
-                  onChange={e => this.updateBio(e.target.value)}
-                  className="admin_bio"
-                />
+                <GetBio admin/>
               </div>
             )}
           </div>
@@ -140,8 +91,7 @@ class MainAdmin extends Component {
         </div>
         <Modal handleClose={this.handleClose} show={this.state.show}>
           <div className="modal_admin">
-            {eventInputs}
-            <button onClick={this.submitEvent}>Add Event</button>
+            <AddEvent closeModal={this.closeModal}/>
           </div>
         </Modal>
       </div>

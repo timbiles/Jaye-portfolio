@@ -2,9 +2,12 @@ require('dotenv').config();
 const express = require('express');
 const { json } = require('body-parser');
 const massive = require('massive');
+const { ApolloServer } = require('apollo-server-express');
 const session = require('express-session');
 const path = require('path');
 const routes = require('./routes');
+const { typeDefs } = require('./typeDefs');
+const { resolvers } = require('./resolvers');
 const port = process.env.SERVER_PORT || 3004;
 
 const app = express();
@@ -31,6 +34,21 @@ app.use(
     }
   })
 );
+
+const server = new ApolloServer({ 
+  typeDefs,
+  resolvers,
+  context: (ctx) => ({... ctx})
+});
+
+server.applyMiddleware({
+  app,
+  path: '/graphql',
+  cors: {
+      credentials: true,
+      origin: 'http://localhost:3000',
+    }
+});
 
 routes(app)
 
