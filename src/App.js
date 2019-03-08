@@ -16,7 +16,7 @@ const { client } = new ApolloSplitClient({
 class App extends Component {
   render() {
     return (
-      <ApolloProvider client={client} >
+      <ApolloProvider client={client}>
         <Router>
           <>
             <div className="App">
