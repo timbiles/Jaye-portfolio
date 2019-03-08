@@ -1,42 +1,49 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 
 import Input from './input';
 import data from './info.json';
 import './contact.scss';
 
-class form extends Component {
-  state = {
-    click: false,
-    completed: true,
-    name: '',
-    email: '',
-    phone: '',
-    date: '',
-    location: '',
-    desc: ''
-  };
-
-  handleChange = e => {
-      this.setState({[e.target.name]: e.target.value})
-  }
-
-  submit = async () => {
-      const {name, email, phone, date, location, desc} = this.state
-
-    if (!name || !email || !phone || !date || !location || !desc) {
-      this.setState({completed: false})
-    } else {
-      await axios.put('/api/contacts', {name, email, phone, date, location, desc})
-      this.setState({completed: true})
-    }
-  }
-
-  render() {
-    const { click, completed } = this.state;
-    const inputMap = data.map((e, i) => {
-      return <Input key={i} e={e} handleChange={this.handleChange}/>;
+// class form extends Component {
+  const contact = () => {
+  
+    const [click, setClick] = useState(false)
+    const [completed, setCompleted] = useState(true)
+    const [form, setForm] = useState({
+      name: '',
+      email: '',
+      phone: '',
+      date: '',
+      location: '',
+      desc: ''
     });
+  
+    const inputChange = e => {
+      setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+  // handleChange = e => {
+  //     this.setState({[e.target.name]: e.target.value})
+  // }
+
+  // submit = async () => {
+  //     const {name, email, phone, date, location, desc} = this.state
+
+  //   if (!name || !email || !phone || !date || !location || !desc) {
+  //     this.setState({completed: false})
+  //   } else {
+  //     await axios.put('/api/contacts', {name, email, phone, date, location, desc})
+  //     this.setState({completed: true})
+  //   }
+  // }
+
+    // const { click, completed } = this.state;
+    const inputMap = data.map((e, i) => {
+      return <Input key={i} e={e} inputChange={inputChange}/>;
+    });
+
+    console.log(form)
 
     return (
       <div className="contact">
@@ -48,14 +55,14 @@ class form extends Component {
             {inputMap}
             <p className={click ? 'focus_p' : ''}>Description of Event</p>
             <textarea
-              name=""
+              name="desc"
               id=""
               cols="30"
               rows="10"
               placeholder="Brief description.."
-              onFocus={() => this.setState({ click: true })}
-              onBlur={() => this.setState({ click: false })}
-              onChange={e=> this.setState({desc: e.target.value})}
+              onFocus={() => setClick(true)}
+              onBlur={() => setClick(false)}
+              onChange={inputChange}
             />
             <button onClick={()=> this.submit()}>Contact Now</button>
             {!completed && <p className='error'>** Please fill out each input field.</p> }
@@ -64,6 +71,6 @@ class form extends Component {
       </div>
     );
   }
-}
 
-export default form;
+
+export default contact;
