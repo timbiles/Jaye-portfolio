@@ -26,9 +26,9 @@ module.exports = app => {
   //endpoints
   app.put('/api/contacts', submitContacts);
 
-  app.get('/api/events', getEvents);
-  app.post('/api/events', addEvent);
-  app.delete('/api/events/:id', removeEvent);
+  // app.get('/api/events', getEvents);
+  // app.post('/api/events', addEvent);
+  // app.delete('/api/events/:id', removeEvent);
 
   app.get('/api/biography', getBio);
   app.put('/api/biography', editBio);
