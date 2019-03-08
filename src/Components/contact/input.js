@@ -25,7 +25,7 @@ class input extends Component {
   };
 
   render() {
-    const { e, handleChange } = this.props;
+    const { e, inputChange } = this.props;
     const { click, phoneNum } = this.state;
     return (
       <div className="input_map">
@@ -37,7 +37,7 @@ class input extends Component {
             value={phoneNum !== 0 ? phoneNum : ''}
             type="text"
             onChange={e => {
-              handleChange(e);
+              inputChange(e);
               this.setState({ phoneNum: e.target.value });
             }}
             onFocus={() => this.setState({click: true})}
@@ -51,7 +51,7 @@ class input extends Component {
             name={e.name}
             type="text"
             autoComplete='off'            
-            onChange={handleChange}
+            onChange={inputChange}
             onFocus={() => this.setState({ click: true })}
             onBlur={() => this.setState({ click: false })}
           />
