@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ApolloSplitClient from 'apollo-split-client';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { ApolloProvider } from 'react-apollo';
@@ -13,8 +13,7 @@ const { client } = new ApolloSplitClient({
   credentials: 'include'
 });
 
-class App extends Component {
-  render() {
+const App = () => {
     return (
       <ApolloProvider client={client}>
         <Router>
@@ -30,7 +29,6 @@ class App extends Component {
       </ApolloProvider>
     );
   }
-}
 
 export default App;
 
