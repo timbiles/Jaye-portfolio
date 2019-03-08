@@ -1,3 +1,5 @@
+// These are the functions that retrieve data/perform whatever action you want with your request. Think of the functions that were a part of the endpoint.
+
 const resolvers = {
     Query: {
       events: async (parent, args, context) => {

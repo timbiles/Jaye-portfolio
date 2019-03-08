@@ -23,7 +23,11 @@ const contact = () => {
 
   const submitForm = () => {
     // submit form here...
-    console.log(form);
+    const {name, email, phone, date, location, desc} = form
+
+    !name || !email || !phone || !date || !location || !desc 
+      ? setCompleted(false)
+      : console.log(form)
   };
 
   const inputMap = data.map((e, i) => {
