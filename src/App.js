@@ -19,6 +19,7 @@ class App extends Component {
   render() {
     return (
       <Main>
+        <span/>
         <ApolloProvider client={client} >
           <Router>
             <>
@@ -40,7 +41,7 @@ export default App;
 const Main = styled.div`
   position: absolute;
   width: 100vw;
-  background: url(${music}) no-repeat center center fixed;
+  background: url(https://firebasestorage.googleapis.com/v0/b/galaxy-routing.appspot.com/o/random%2Fluca-dugaro-397450-unsplash.jpg?alt=media&token=e3702de6-dd33-4633-887b-533017fd6852) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -49,23 +50,27 @@ const Main = styled.div`
   padding: 0;
   border: 0;
 
+  span {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: rgba( 255, 255, 255, 0.6)
+  }
+
   .App {
   position: relative;
   text-align: center;
   margin: auto;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  border: 1px solid rgba(191, 191, 191, 0.7);
-  /* background: rgba( 0, 0, 0, 0.3);
-  box-shadow: 0px 0px 5px 5px rgba( 0, 0, 0, 0.3); */
-  /* box-shadow: inset 0px 0px 5px 5px rgba( 0, 0, 0, 0.3), 0px 0px 5px 5px rgba( 0, 0, 0, 0.3); */
-  box-shadow: 0px 0px 1px 15px rgba( 255, 255, 255, 0.99);
+  /* border: 1px solid rgba(191, 191, 191, 0.7); */
+  border: 1px solid black;
+  /* box-shadow: 0px 0px 1px 15px rgba( 255, 255, 255, 0.8); */
   border-radius: 5px;
-  background: rgba( 255, 255, 255, 0.99);
+  /* background: rgba( 255, 255, 255, 0.8); */
   min-height: 90vh;
   width: 90vw;
   z-index: 1;
-  /* padding: 1%; */
 }
 
   @media (max-width: 950px) {
