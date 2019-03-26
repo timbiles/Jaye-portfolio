@@ -7,21 +7,21 @@ import music from '../../assets/images/music-sheet.jpg';
 
 const home = () => {
     return (
-      <Main>
+      <Home>
         <div className="home">
           <img src={jaye} alt="Profile pic" />
         </div>
-      </Main>
+      </Home>
     );
   }
 
 export default home;
 
-const Main = styled.div`
-  position: absolute;
+const Home = styled.div`
+  /* position: absolute;
   top: 0;
-  left: 0;
-  height: 100vw;
+  left: 0; */
+  /* height: 100vw;
   width: 100vw;
   background: url(${music}) no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -29,7 +29,7 @@ const Main = styled.div`
   -o-background-size: cover;
   background-size: cover;
   z-index: -1;
-  opacity: 0.7;
+  opacity: 0.7; */
 
   .home {
   position: relative;
@@ -40,6 +40,7 @@ const Main = styled.div`
 
     img {
       height: 80vh; 
+      border-radius: 2px;
     }
 
     .staff {

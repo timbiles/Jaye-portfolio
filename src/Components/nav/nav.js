@@ -22,7 +22,7 @@ const nav = () => {
   });
   return (
     <>
-      <h1 className="nav_title">Jaye Biles</h1>
+      {/* <h1 className="nav_title">Jaye Biles</h1> */}
       <div className="nav">
         {nav ? (
           <>{linkMap}</>
