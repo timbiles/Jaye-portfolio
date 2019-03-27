@@ -1,20 +1,24 @@
 import React from 'react';
-
-import './music.scss';
+import styled from 'styled-components';
 
 const music = () => {
   return (
-    <div className="music">
+    <Container className="music">
       <iframe
-        width="420"
+        width="70%"
         height="345"
         src="https://www.youtube.com/embed/gShDVt7IVko"
         title="Jaye_video"
         allowFullScreen
         frameBorder="0"
       />
-    </div>
+    </Container>
   );
 };
 
 export default music;
+
+const Container = styled.div`
+  min-height: 90vh;
+  margin-top: 10vh;
+`
