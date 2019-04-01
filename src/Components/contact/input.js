@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Text } from './contact';
 
-class input extends Component {
-  state = {
-    click: false,
-    phoneNum: 0
-  };
+const input = (props) => {
+  const [click, setClick] = useState(false)
+  const [phoneNum, setPhoneNum] = useState(0)
 
-  updateNum = () => {
-    const { phoneNum } = this.state;
+  const updateNum = () => {
     let num = phoneNum && phoneNum.split('');
     num = phoneNum && [
       num.slice(0, 3),
@@ -19,46 +18,62 @@ class input extends Component {
     let newArr = [];
     phoneNum &&
       !phoneNum.includes('-') &&
-      this.setState({
-        phoneNum: newArr.concat(num[0], num[1], num[2], num[3], num[4]).join('')
-      });
+      setPhoneNum(newArr.concat(num[0], num[1], num[2], num[3], num[4]).join(''))
   };
 
-  render() {
-    const { e, inputChange } = this.props;
-    const { click, phoneNum } = this.state;
+    const { e, inputChange } = props;
     return (
-      <div className="input_map">
-        <p className={click ? 'focus_p' : ''}>{e.text}</p>
+      <Cont className="input_map">
+        <Text primary className={click ? 'focus_p' : ''}>{e.text}</Text>
         {e.text === 'Contact Phone' ? (
-          <input
+          <Input
             name={e.name}
             autoComplete='off'
             value={phoneNum !== 0 ? phoneNum : ''}
             type="text"
             onChange={e => {
               inputChange(e);
-              this.setState({ phoneNum: e.target.value });
+              setPhoneNum(e.target.value);
             }}
-            onFocus={() => this.setState({click: true})}
+            onFocus={() => setClick(true)}
             onBlur={() => {
-              this.updateNum()
-              this.setState({click: false})
+              updateNum()
+              setClick(false)
             }}
           />
         ) : (
-          <input
+          <Input
             name={e.name}
             type="text"
             autoComplete='off'            
             onChange={inputChange}
-            onFocus={() => this.setState({ click: true })}
-            onBlur={() => this.setState({ click: false })}
+            onFocus={() => setClick(true)}
+            onBlur={() => setClick(false)}
           />
         )}
-      </div>
+      </Cont>
     );
   }
-}
 
 export default input;
+
+const Cont = styled.div`
+display: flex;
+  justify-content: space-between;
+  align-items: center;
+  p {
+    width: 150px;
+  }
+`
+
+const Input = styled.input`
+    height: 25px;
+    width: 300px;
+    border-radius: 0;
+    margin: 1%;
+    font-size: 0.9em;
+    border-bottom: 1px solid rgb(165, 165, 165);
+    :focus {
+      outline: none;
+    }
+`
