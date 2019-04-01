@@ -1,6 +1,3 @@
-const { submitContacts, getEvents, addEvent, removeEvent } = require('./ctrl/eventCtrl');
-const { getBio, editBio } = require('./ctrl/bioCtrl');
-
 module.exports = app => {
   // sessions
   app.put('/api/admin', (req, res) => {
@@ -22,14 +19,4 @@ module.exports = app => {
       return res.status(500);
     }
   });
-
-  //endpoints
-  app.put('/api/contacts', submitContacts);
-
-  // app.get('/api/events', getEvents);
-  // app.post('/api/events', addEvent);
-  // app.delete('/api/events/:id', removeEvent);
-
-  app.get('/api/biography', getBio);
-  app.put('/api/biography', editBio);
 };

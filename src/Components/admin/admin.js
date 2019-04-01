@@ -1,39 +1,44 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import MainAdmin from './mainAdmin';
 import './admin.scss';
 
-class admin extends Component {
-  state = {
-    login: false,
-    err: false,
+const admin = () => {
+  const [login, setLogin] = useState(false)
+  const [err, setErr] = useState(false)
+  const [username, setUsername] = useState({
     user: '',
     pass: ''
+  })
+
+  const inputChange = e => {
+    setUsername({ ...username, [e.target.name]: e.target.value });
   };
 
-  componentDidMount() {
-    axios.get('/api/logged-in').then(()=> {
-      this.setState({login: true})
-    })
+  const checkLogin = async() => {
+    await axios.get('/api/logged-in')
+    setLogin(true);
   }
 
-  handleLogin = async () => {
-    const { user, pass } = this.state;
+  useEffect( ()=> {
+    checkLogin()
+  }, [login])
+
+  const handleLogin = async () => {
+    const {user, pass} = username
     try {
       await axios.put('/api/admin', { user, pass })
-      this.setState({ login: true });
+      setLogin(true);
     } catch {
-      this.setState({ err: true });
+      setErr(true);
     }
   };
 
-  handleEnter= (e) => { 
+  const handleEnter= (e) => { 
     e.key === 'Enter' && this.handleLogin()
   }
 
-  render() {
-    const { login, err } = this.state;
     return !login ? (
       <div className="admin">
         <div className="login">
@@ -53,7 +58,8 @@ class admin extends Component {
               />
               <input
                 type="text"
-                onChange={e => this.setState({ user: e.target.value })}
+                name='user'
+                onChange={inputChange}
               />
             </div>
             <div>
@@ -63,11 +69,12 @@ class admin extends Component {
               />
               <input
                 type="password"
-                onChange={e => this.setState({ pass: e.target.value })}
-                onKeyDown={this.handleEnter}
+                name='pass'
+                onChange={inputChange}
+                onKeyDown={handleEnter}
               />
             </div>
-            <button onClick={this.handleLogin}>Log In</button>
+            <button onClick={handleLogin}>Log In</button>
             {err && <p>**Invalid username, please try again.</p>}
           </div>
         </div>
@@ -76,6 +83,5 @@ class admin extends Component {
       <MainAdmin />
     );
   }
-}
 
 export default admin;
