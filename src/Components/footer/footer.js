@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 
 import Youtube from '../tools/icons/Youtube';
 
-export default () => {
+const footer = () => {
   return (
     <Container primary>
       <Container style={{display: 'flex'}}>
@@ -20,6 +20,8 @@ export default () => {
     </Container>
   );
 };
+
+export default footer;
 
 const Container = styled.div`
   display: flex;
