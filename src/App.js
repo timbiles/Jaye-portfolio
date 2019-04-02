@@ -20,6 +20,9 @@ const App = () => {
       <ApolloProvider client={client}>
         <Router>
           <>
+            <Backsplash>
+              <span/>
+            </Backsplash>
             <GlobalStyle />
             <Container>
               <Nav />
@@ -62,13 +65,14 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Container = styled.div`
+  /* background: blue; */
   text-align: center;
   margin: auto;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  border: 1px solid rgba(191, 191, 191, 0.7);
-  min-height: 90vh;
-  width: 90vw;
+  /* border: 1px solid rgba(191, 191, 191, 0.7); */
+  /* min-height: 90vh;
+  width: 70vw; */
 
   @media (max-width: 950px) {
     border: none;
@@ -76,3 +80,29 @@ const Container = styled.div`
     width: 100vw;
   }
 `;
+
+const Backsplash = styled.div`
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100vw;
+  background: url(${music}) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  span {
+    position: absolute;
+    z-index: -2;
+    height: 100%;
+    width: 100%;
+    background: url('https://raw.githubusercontent.com/timbiles/dad_portfolio/master/src/Components/Home/dust_scratches.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    opacity: 0.96;
+  }
+`

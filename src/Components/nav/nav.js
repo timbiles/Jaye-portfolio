@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-import './nav.scss';
+// import './nav.scss';
 
 const links = ['', 'About', 'Music', 'Events', 'Contact'];
 
@@ -23,14 +23,14 @@ const nav = () => {
   });
   return (
     <Nav>
-      {/* <h1 className="nav_title">Jaye Biles</h1> */}
+      <h1 className="nav_title">Jaye Biles</h1>
       <div className="nav">
+      <span className='line'/>
         {nav ? (
           <>{linkMap}</>
-        ) : (
-          <>
+          ) : (
+            <>
             <div className="link_holder">{linkMap}</div>
-            {/* <span /> */}
             <img
               onClick={() => setNav(true)}
               className="hidden_nav"
@@ -39,6 +39,7 @@ const nav = () => {
             />
           </>
         )}
+      <span className='line'/>
       </div>
     </Nav>
   );
@@ -52,16 +53,13 @@ const Nav = styled.div`
 .nav {
   display: flex;
   justify-content: center;
+  align-items: center;
   height: 10vh;
   position: relative;
 
-  span {
-    position: absolute;
-    margin: auto;
-    top: 0;
-    bottom: 0;
-    width: 75%;
+  .line {
     height: 1px;
+    width: 7%;
     border-bottom: 1px solid #bdbdbd;
 
     @media (max-width: 700px) {
@@ -71,9 +69,13 @@ const Nav = styled.div`
 }
 
 .nav_title {
-  margin-top: 5vh;
-  font-family: 'Montserrat', sans-serif;
+  margin: 1vh 0;
+  font-family: cursive;
+  font-style: italic;
+  letter-spacing: 0.5em;
+  font-size: 3em;
 }
+
 .link_holder {
   width: 60%;
   display: flex;
@@ -81,19 +83,17 @@ const Nav = styled.div`
   align-items: center;
   z-index: 9;
   position: relative;
-  /* background: #fff; */
-  background: rgba(255, 255, 255, 0)
 }
 
-.links {
+.links, .active_links {
   color: #000;
   text-decoration: none;
   font-size: 1em;
   letter-spacing: 1.5px;
+  text-decoration: none;
 }
 
 .active_links {
-  @extend .links;
   border-bottom: 1px solid #56a082;
   border-top: 1px solid #56a082;
 }
@@ -111,10 +111,6 @@ button {
   &:active {
     transform: scale(0.98);
   }
-}
-
-.body {
-  border: 1px solid #000;
 }
 
 .hidden_nav {
