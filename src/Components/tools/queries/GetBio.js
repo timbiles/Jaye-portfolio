@@ -15,9 +15,9 @@ const web = <a href="http://www.thenostalgics.org/">thenostalgics.org</a>;
 const GetBio = ({admin}) => {
     return (
         <Query query={GET_BIO}>
-        {({loading, data, error}) => {
+        {({loading, data}) => {
             if(loading) {
-              return <h1>Loading...</h1>
+              return <p>Loading...</p>
             }
             return admin ? (
                 <EditBio bio={data.bio.biography}/>

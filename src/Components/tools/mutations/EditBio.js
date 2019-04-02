@@ -16,7 +16,7 @@ const EditBio = (props) => {
 
     return (
         <Mutation variables={{ biography: biography }} mutation={EDIT_BIO} refetchQueries={['bio']}>
-      {(editBio, { _, error, loading }) => {
+      {(editBio, { error, loading }) => {
         if (error) {
           console.log(error);
         }
@@ -35,6 +35,8 @@ export default EditBio;
 
 const Text = styled.textarea`
   border: 1px solid #eee;
+  width: 400px;
+  text-align: center;
 
   &:focus {
     outline: 1px solid lightblue;

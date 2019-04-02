@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Youtube = () => {
+export default () => {
   return (
     <>
       <a href="https://www.youtube.com/user/jayebiles" target="blank">
@@ -17,8 +17,6 @@ const Youtube = () => {
     </>
   );
 };
-
-export default Youtube;
 
 const Svg = styled.svg`
   fill: #ff0001;
